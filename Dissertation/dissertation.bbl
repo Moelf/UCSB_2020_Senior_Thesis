@@ -1,12 +1,3 @@
-\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}
-
-\bibitem{Maldacena:1997re}
-J.~M. Maldacena, {\it {The Large N limit of superconformal field theories and
-  supergravity}},  {\em Adv.Theor.Math.Phys.} {\bf 2} (1998) 231--252,
-  [\href{http://xxx.lanl.gov/abs/hep-th/9711200}{hep-th/9711200}].
-
-\bibitem{joesbook}
-J.~{Polchinski}, {\em String Theory, Volumes 1 and 2}.
-\newblock Cambridge University Press, Cambridge, first~ed., 2005.
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{}
 
 \end{thebibliography}\endgroup
