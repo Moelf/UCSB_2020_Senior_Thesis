@@ -195,6 +195,7 @@ INPUT dissertation.toc
 OUTPUT dissertation.toc
 INPUT tex/introduction.tex
 INPUT tex/introduction.tex
+INPUT fig/CMS_Slice.png
 INPUT tex/methods.tex
 INPUT tex/methods.tex
 INPUT tex/results_interp.tex

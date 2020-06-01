@@ -1,12 +1,17 @@
 This is BibTeX, Version 0.99d (TeX Live 2019/Arch Linux)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: dissertation.aux
+White space in argument---line 27 of file dissertation.aux
+ : \citation{validation
+ :                      of cms}
+I'm skipping whatever remains of this command
 The style file: JHEP3.bst
-I found no \citation commands---while reading file dissertation.aux
 Database file #1: dissertation.bib
+Warning--I didn't find a database entry for "xampl"
+Warning--I didn't find a database entry for "geant4"
 You've used 0 entries,
             2195 wiz_defined-function locations,
-            508 strings with 3425 characters,
+            510 strings with 3436 characters,
 and the built_in function-call counts, 21 in all, are:
 = -- 0
 > -- 0
