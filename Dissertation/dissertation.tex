@@ -4,9 +4,12 @@
 % \pdfoutput=1
 
 %--- Packages ---------------------------------------------------------
+\usepackage{silence}
+\WarningFilter{latex}{Underfull}
+\WarningsOff[todonotes]
+\WarningsOff[hyperref]
 \usepackage[lofdepth,lotdepth,caption=false]{subfig}
 \usepackage{fancyhdr}
-\usepackage{hyperref}
 \usepackage{amsmath, amssymb, graphicx}
 \usepackage{xspace}
 \usepackage{braket}
@@ -21,6 +24,9 @@
 \usepackage{setspace}
 \usepackage{url}
 \usepackage{textcomp}
+\usepackage{todonotes}
+\usepackage{hyperref}
+\usepackage{hepnames}
 % \pagestyle{empty}
 % \setlength{\parindent}{0mm}
 % \setlist{nolistsep}

@@ -7,39 +7,39 @@ LHC physics and the physics behind the off-shell methods
 for constraining Higgs decay width.
 
 \section{Physics at LHC}
-\begin{itemize}
-    \item LHC
-    \item CMS (trigger, PF, anti-Kt)
-\end{itemize}
-
 After the discovery of Standard Model (SM) Higgs boson in 2012, the Large Hadron Collider (LHC)
 went through a series of upgrades during Long Shutdown 1 (2013-2015) and finally restarted with center-of-mass energy reaching
 \SI{13}{\tera\electronvolt}. Though the last particle promised by the SM has been discovered,
-no SuperSymmetry (SUSY) particle was spotted at all.
+no Supersymmetry (SUSY) particle has been spotted so far.
+
+The null results has not discouraged physicists from other attempts of probing the 
+beyond the Standard Model (BSM) physics in other ways. Higgs boson has a special role in
+the process mainly due to the Higgs field which it originates from couples to massive particles
+and could be a window to probe BSM the physics, as discussed in Section \ref{sec:physics_offshell}.
 
 The LHC has been operating at the same energy for the past 3 years (2016-2018) and each year
 the delivered luminosity as been ramping up.\cite{xampl} In this analysis, we will be using
 simulation that corresponds to Run period 2018, which in turn corresponds to a 
 \SI{59.74}{\per\femto\barn} luminosity for the Compact Muon Solenoid (CMS) detector.\cite{xampl}
 
-
 \section{The CMS Detector}
 The CMS is one of the two general purpose detectors built around LHC (the other one is ATLAS). It
 is `compact' only when comparing to the ATLAS detector and is in fact heavier than the latter.
 Though we are not using the data accumulated by the CMS detector, the simulated events are
 reconstructed based on the material and electronics responses of the real detector using the
-\gf{} package.\cite{geant4}
+\gf package.\cite{geant4}
 
 The defining feature of the CMS detector is the solenoid (as in its name) around the beam line.
 This superconducting solenoid produces a \SI{4}{\tesla} magnetic field and is 
-\SI{12.5}{\meter} long free bore.\cite{validation of cms} This feature allows the track of
+\SI{12.5}{\meter} long free bore.\cite{validation_cms} This feature allows the track of
 any charged particle (given the momentum is not ridiculously high) to be bent when penetrating
 the detector layers and leave behind a track which provides information regarding the particle's 
 electric charge.
 
+
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=.70\linewidth]{fig/CMS_Slice.png}
+\includegraphics[width=.75\linewidth]{fig/CMS_Slice.png}
 \end{center}
 \caption{A section slice of the CMS detector where we can see how 
 particles with different physical properties interact differently with the detector.}
@@ -60,17 +60,67 @@ field outside of the superconducting solenoid. Information regarding muons are l
 most reliably extracted from the muon chambers withing the iron return yoke. Notice how the
 muon chambers occupy more than half of the detector by size, such design allows the CMS 
 detector to exceeds in muon measurements and is the primary reason for the overall design.
+\todo[inline]{TODO: PF and anti-k algorithm in the context of this thesis}
 
-
-\section{The physics of off-shell methods}
+\section{The Higgs boson and off-shell methods}\label{sec:physics_offshell}
 [1]Caola F, Melnikov K. Constraining the Higgs boson width with ZZ production at the LHC. Phys Rev D 2013;88:054024. https://doi.org/10.1103/PhysRevD.88.054024.
 
-The importance of a Beyond Standard Model (BSM) physics is self-evident, though the SM is one
+The importance of a Beyond the Standard Model (BSM) physics is self-evident, though the SM is one
 of the most precise theory in physics we ever had, the model requires many `inputs' from experiment
 for parametrization, and, it cannot account for phenomena such as neutrino oscillation with its
 original form. While the direct searches in the past few years have all yield null results,
-many in-direct probing have been going as well.
-\newpage\phantom{blabla}
+many indirect probing have been going as well.
+
+As mentioned above, the Higgs boson has a special place as it can be seen as a `bridge' between
+the SM and the BSM (in some models) as some SUSY particles can decay into it or it can decay
+into SUSY particles, or simply have a BSM production Feynman diagram that leads to more Higgs
+bosons than the SM would expect. In any of these cases, the basic properties of the SM Higgs
+boson remain important.
+
+Many properties are well measured, such as it's mass and spin \cite{higgs_papers}, others, however,
+have not entered the relm of `precision' physics so far. One of them is the decay width of
+the Higgs boson, which is of course associated to the particle's half-life. The SM predicts
+that the Higgs boson to have a decay width of \SI{4.1}{\mega\electronvolt}. The problem is
+that the energy resolution of the CMS detector, which is around $\mathcal{O}(1)$\si{\giga\electronvolt}
+for the di-photon or 4-leptons final states, is not even remotely small enough to check this 
+prediction directly.
+
+I will give a very brief account\cite{ulascan} for the proposed (and been completed in previous years' run)
+method that can constrain the Higgs decay width using events that fall into the off-shell
+tail.
+
+When the Higgs boston decays to two vector bosons (VV), in the scope of this thesis, two Z bosons,
+either one of the vector bosons is off-shell, or the Higgs boson is off-shell, this is because
+$m_\text{H}\approx\SI{125}{\giga\electronvolt}$ is smaller than the 
+mass of two \PW{}'s($\approx\SI{160}{\giga\electronvolt}$) 
+or two \PZ{}'s($\approx\SI{182}{\giga\electronvolt}$). The Higgs boson decay branching ratio
+is coupled to the dauther particles' mass thus this cross section
+$\sigma_{\mathrm{H}\rightarrow\mathrm{VV}}$ is enhanced as the mass of Higgs boson gets closer to 
+the on-shell VV mass.  
+
+In fact, the production of Higgs boson from a pair of vector boson is also related to the
+decay width of Higgs boson $\Gamma_\text{\PH}$ via the propagator term. In terms of the
+differential corss section:
+\be
+\frac{\mathrm{d} \sigma_{\mathrm{vv} \rightarrow \mathrm{H} \rightarrow \mathrm{VV}}}{\mathrm{d} q_{\mathrm{H}}^{2}} 
+\sim 
+\frac{g_{\mathrm{vvH}}^{2} g_{\mathrm{HVV}}^{2}}{\left(q_{\mathrm{H}}^{2}-m_{\mathrm{H}}^{2}\right)^{2}+m_{\mathrm{H}}^{2} \Gamma_{\mathrm{H}}^{2}}
+\ee
+where the two $g$ on the right-hand side are the couplings for production from VV and decay
+to VV respectively. Integrating this equation near the on-shell mass of the SM Higgs boson 
+or in the tail region (above the mass of VV), one can translate the differential cross section
+into event rate that can be (in theory) measured in experiments:
+\begin{equation}
+\begin{split}
+&N_{\mathrm{vv} \rightarrow \mathrm{H} \rightarrow \mathrm{VV}^{*}}^{\text{on-shell}} \sim \frac{g_{\mathrm{vvH}}^{2} g_{\mathrm{HVV}}^{2}}{m_{\mathrm{H}} \Gamma_{\mathrm{H}}} \sim \mu_{\mathrm{vvH}}
+\\
+&N_{\mathrm{vv} \rightarrow \mathrm{H}^{*} \rightarrow \mathrm{VV}}^{\text{off-shell}} \sim \frac{g_{\mathrm{vvH}}^{2} g_{\mathrm{HVV}}^{2}}{\left(2 m_{\mathrm{V}}\right)^{2}} \sim \mu_{\mathrm{vvH}} \cdot \Gamma_{\mathrm{H}}
+\end{split}
+\end{equation}
+The key takeaway is that, up to some correction factors, the event rates of off-shell scales
+linearly respect to the Higgs decay width $\Gamma_\text{\PH}$ which allows us to indirectly
+measure the width itself.
+\todo[inline]{maybe elaborate a bit more?}
 \newpage\phantom{blabla}
 
 

@@ -1,7 +1,7 @@
 % UCTHESIS DOCUMENT CLASS -- Release info is below.
 %    for LaTeX version 2e - 11/3/94
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ucthesis-CA2012} [2012/05/08 Revision by Curtis Asplund of 1996/06/26 JTW's modification of 1994/10/31 v3.0 University of California Thesis Class]
+\ProvidesClass{sty/ucthesis-CA2012} [2012/05/08 Revision by Curtis Asplund of 1996/06/26 JTW's modification of 1994/10/31 v3.0 University of California Thesis Class]
 
 % stuff
 %    ****************************************
