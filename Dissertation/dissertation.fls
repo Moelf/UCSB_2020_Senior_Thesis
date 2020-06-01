@@ -262,6 +262,8 @@ INPUT /usr/share/texmf-dist/tex/latex/hepparticles/hepparticles.sty
 INPUT /usr/share/texmf-dist/tex/latex/hepparticles/hepparticles.sty
 INPUT /usr/share/texmf-dist/tex/latex/subdepth/subdepth.sty
 INPUT /usr/share/texmf-dist/tex/latex/subdepth/subdepth.sty
+INPUT /usr/share/texmf-dist/tex/latex/physics/physics.sty
+INPUT /usr/share/texmf-dist/tex/latex/physics/physics.sty
 INPUT dissertation.aux
 INPUT dissertation.aux
 OUTPUT dissertation.aux
@@ -330,6 +332,8 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/lm/rm-lmr6.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/lm/rm-lmr5.tfm
 INPUT tex/methods.tex
 INPUT tex/methods.tex
+INPUT fig/signal_rewgt_placeholder.png
+INPUT fig/binning_placeholder.png
 INPUT tex/results_interp.tex
 INPUT tex/results_interp.tex
 INPUT tex/appendices.tex

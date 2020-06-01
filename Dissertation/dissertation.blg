@@ -8,9 +8,10 @@ Warning--I didn't find a database entry for "geant4"
 Warning--I didn't find a database entry for "validation_cms"
 Warning--I didn't find a database entry for "higgs_papers"
 Warning--I didn't find a database entry for "ulascan"
+Warning--I didn't find a database entry for "POWHEG"
 You've used 0 entries,
             2195 wiz_defined-function locations,
-            513 strings with 3469 characters,
+            515 strings with 3481 characters,
 and the built_in function-call counts, 21 in all, are:
 = -- 0
 > -- 0
@@ -49,4 +50,4 @@ warning$ -- 0
 while$ -- 0
 width$ -- 0
 write$ -- 2
-(There were 5 warnings)
+(There were 6 warnings)

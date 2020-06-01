@@ -1,16 +1,16 @@
 # Fdb version 3
-["bibtex dissertation"] 1591001640 "dissertation.aux" "dissertation.bbl" "dissertation" 1591001642
+["bibtex dissertation"] 1591005848 "dissertation.aux" "dissertation.bbl" "dissertation" 1591005850
   "./JHEP3.bst" 1361397774 21430 c1235b6c5e2bd2981e5ba6e4ece6a7cc ""
-  "dissertation.aux" 1591001641 4013 391e93e03b8b2b1482c4253b9ba76185 "xelatex"
+  "dissertation.aux" 1591005849 5263 65541bc0793ac740d780fd220dc4918c "xelatex"
   "dissertation.bib" 1369189266 815 2c6a3462bff7d10a73a14baaf12c9da5 ""
   (generated)
   "dissertation.blg"
   "dissertation.bbl"
-["xdvipdfmx"] 1591001641 "dissertation.xdv" "dissertation.pdf" "dissertation" 1591001642
-  "dissertation.xdv" 1591001641 168340 7a24867fd1f8157d0b5c16a7e7ba9fbf "xelatex"
+["xdvipdfmx"] 1591005849 "dissertation.xdv" "dissertation.pdf" "dissertation" 1591005850
+  "dissertation.xdv" 1591005849 184960 525ab62bfb8e833859985ce3143ab699 "xelatex"
   (generated)
   "dissertation.pdf"
-["xelatex"] 1591001640 "dissertation.tex" "dissertation.xdv" "dissertation" 1591001642
+["xelatex"] 1591005848 "dissertation.tex" "dissertation.xdv" "dissertation" 1591005850
   "/dev/null" 1590890236 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1572595918 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/share/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1572595918 1528 f853c4d1b4e0550255e02831fdc8496f ""
@@ -168,6 +168,7 @@
   "/usr/share/texmf-dist/tex/latex/pgf/utilities/pgffor.sty" 1572595918 348 8927fde343487e003b01a4c2ca34073b ""
   "/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty" 1572595918 274 4cad6e665cc93ac2ac979039a94fa1e1 ""
   "/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty" 1572595918 325 2bcd023400636339210573e2b3ee298b ""
+  "/usr/share/texmf-dist/tex/latex/physics/physics.sty" 1572570994 29610 a9597219b282d9c78b02393dcd7d4322 ""
   "/usr/share/texmf-dist/tex/latex/setspace/setspace.sty" 1572595918 22913 a27d7908fc6f0385466454a966a316eb ""
   "/usr/share/texmf-dist/tex/latex/silence/silence.sty" 1572592815 17540 5aad5dddd881dee43ad1a83adb336af9 ""
   "/usr/share/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg" 1572570994 4745 5e578e91b3a2e2e7f888f49fe4d3df59 ""
@@ -188,23 +189,25 @@
   "/usr/share/texmf-dist/tex/xelatex/xecjk/xeCJK.sty" 1572595918 178478 3f9c6b282bd945e7e1bccde9825d0810 ""
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1572595918 33301 a3134070eacafb10b1f371612ce2650d ""
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1588470641 4126401 0ce0a7327514b88be85ef2b4e67d5fe0 ""
-  "dissertation.aux" 1591001641 4013 391e93e03b8b2b1482c4253b9ba76185 "xelatex"
-  "dissertation.bbl" 1591001640 110 45a49a2c91184cd9298df1dd4f9fe39a "bibtex dissertation"
-  "dissertation.out" 1591001641 1148 d9d4483209e5489168363bcbee895b2d "xelatex"
-  "dissertation.tex" 1590999556 3716 3e98c9b07c3d484b7c426d35f4bcc640 ""
-  "dissertation.toc" 1591001641 1304 182c0dc4d56b30eccabcfe9ea38aa9f0 "xelatex"
+  "dissertation.aux" 1591005849 5263 65541bc0793ac740d780fd220dc4918c "xelatex"
+  "dissertation.bbl" 1591005848 110 45a49a2c91184cd9298df1dd4f9fe39a "bibtex dissertation"
+  "dissertation.out" 1591005849 1045 16506a13f2940ab40445d1918ed941b1 "xelatex"
+  "dissertation.tex" 1591004932 3915 be36a89d9b09b1ee2a1fcd1748d6e23b ""
+  "dissertation.toc" 1591005849 1199 d0bebb9f0c710397b06c51fd7423c14f "xelatex"
   "fig/CMS_Slice.png" 1590988340 526698 f1957d9dd06f52224439d51bd8effd10 ""
+  "fig/binning_placeholder.png" 1591005727 187619 c48c8afa29f1523ecf680684c9aee213 ""
+  "fig/signal_rewgt_placeholder.png" 1591005593 178620 4a6a9c9036af5b1196b71296e1c6fb28 ""
   "sty/ucthesis-CA2012.cls" 1590995596 41385 37a8cbcb98e00cc0cca58cf69c1090c3 ""
   "tex/abstract.tex" 1590995515 1080 023cba27cb3ce4fabe9c17070ddba711 ""
   "tex/acknowledgements.tex" 1590995512 1326 f9ca7458d4c22d24afdeba7ab2a67a90 ""
-  "tex/appendices.tex" 1590431195 272 9bf872fe494f08c69ad16da89564082a ""
-  "tex/introduction.tex" 1591001638 9456 0d36408aa7a93dcc051ddf79eb8b0511 ""
-  "tex/methods.tex" 1590435181 989 89da2ef53547dee0745c5a960c67ae13 ""
-  "tex/results_interp.tex" 1590431055 50 9196509f97ab93c09df768687356cecd ""
+  "tex/appendices.tex" 1591005845 122 f0b37eee876e9cb5003a6ea897a4cc8f ""
+  "tex/introduction.tex" 1591003317 9604 16775ed3f1e22ec6229692581444e8f1 ""
+  "tex/methods.tex" 1591005823 3033 60a19fc9bfadc887990fd8e867fc4b31 ""
+  "tex/results_interp.tex" 1591005808 25 dcc6fe58b63bb0e220e8d5cb0a64e24c ""
   "tex/title.tex" 1590995553 851 324dac2672c920a81c9ee035290c81a6 ""
   (generated)
-  "dissertation.aux"
-  "dissertation.log"
+  "dissertation.out"
   "dissertation.toc"
   "dissertation.xdv"
-  "dissertation.out"
+  "dissertation.log"
+  "dissertation.aux"
