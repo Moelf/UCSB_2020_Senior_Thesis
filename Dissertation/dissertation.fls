@@ -332,10 +332,15 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/lm/rm-lmr6.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/lm/rm-lmr5.tfm
 INPUT tex/methods.tex
 INPUT tex/methods.tex
-INPUT fig/signal_rewgt_placeholder.png
+INPUT fig/LHE_Raw.pdf
+INPUT fig/LHE_PUME_wgts.pdf
+INPUT fig/LHC_compare_windowwgt.pdf
+INPUT fig/LHC_compare_bothwgt.pdf
+INPUT fig/LHE_integral_difference.pdf
 INPUT fig/binning_placeholder.png
 INPUT tex/results_interp.tex
 INPUT tex/results_interp.tex
+INPUT fig/Final_fit.pdf
 INPUT tex/appendices.tex
 INPUT tex/appendices.tex
 INPUT dissertation.bbl
