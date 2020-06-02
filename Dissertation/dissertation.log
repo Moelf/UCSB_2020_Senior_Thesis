@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Arch Linux) (preloaded format=xelatex 2020.5.2)  2 JUN 2020 02:56
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Arch Linux) (preloaded format=xelatex 2020.5.2)  2 JUN 2020 14:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1092,6 +1092,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 74--74
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--74
+
+ []
+
 LaTeX Info: Redefining \HepProcess on input line 74.
 (/usr/share/texmf-dist/tex/generic/oberdiek/se-ascii-print.def
 File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
@@ -1302,10 +1307,10 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 130.
 Here is how much of TeX's memory you used:
  39807 strings out of 492483
  791540 string characters out of 6134980
- 878590 words of memory out of 5000000
+ 878591 words of memory out of 5000000
  43773 multiletter control sequences out of 15000+600000
  549980 words of font info for 80 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  68i,18n,89p,454b,1198s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on dissertation.xdv (23 pages, 197272 bytes).
+Output written on dissertation.xdv (23 pages, 197000 bytes).
