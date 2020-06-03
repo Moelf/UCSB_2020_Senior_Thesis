@@ -18,7 +18,7 @@
 \usepackage{siunitx}
 \usepackage{xeCJK}
 \setCJKmainfont[AutoFakeBold=1.5]{Source Han Mono SC}
-\usepackage{enumitem}
+\usepackage[inline]{enumitem}
 % \usepackage[margin=12mm]{geometry}
 % \addtolength{\topmargin}{0mm}
 \usepackage{setspace}
@@ -28,6 +28,10 @@
 \usepackage{todonotes}
 \usepackage{hepnames}
 \usepackage{physics}
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+\counterwithout{equation}{chapter}
 \newcommand{\gf}{\textsc{Geant4}\xspace}
 \newcommand{\gev}{\si{\giga\electronvolt}}
 \newcommand{\ptll}{p_\mathrm{T}^{\ell\ell}}

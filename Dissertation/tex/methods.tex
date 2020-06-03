@@ -23,7 +23,7 @@ TriggerHelpers::kSingleMu, TriggerHelpers::kSingleEle range pt
 }
 
 The jets are all AK4 jets unless mentioned otherwise. We shall also define a few of the
-uncommon variables in the list, and will give a few physical motivation in the next few
+uncommon variables in the list, and a physical motivations are given in the next few
 paragraphs.
 
 After selecting mandating passing certain triggers, we make a base line cut in the variables
@@ -79,41 +79,113 @@ $\met$ in the direction of the original jet. This cuts requires angular separati
 the jet recoils against ZZ system.
 \newpage\phantom{blabla}
 
-\section{Signal simulation reweighting}
-\begin{itemize}
-    \item Physics of Higgs signal sample (the weight, ME)
-    \item the need for pieceing together samples with different LHE Mass
-    \item results (also see appendix A)
-\end{itemize}
+\section{Signal samples re-weighting}
+\label{sec:sig_rewgt}
+% \begin{itemize}
+%     \item Physics of Higgs signal sample (the weight, ME)
+%     \item the need for pieceing together samples with different LHE Mass
+%     \item results (also see appendix A)
+% \end{itemize}
+Extra attnsion was paied to the off-shell Higgs sample used in this thesis and two different kinds
+of re-weigthing of the simulated events are applied in achiveing a high quality sample with wide
+mass spectrum way beyong the mass of Higgs ($\approx \SI{125}{\giga\electronvolt}$). We use the
+gluon fusion Higgs (ggH) sample to illustrae the procedures, the same procedures are applied to
+the VBF samples as well.
+
+We start by generating separate samples with different Higgs mass, which we call LHECandMass in the
+following plots. This is the mass of Higgs terms appears in the propagator on 
+the R.H.S of Eq.~\ref{eqn:diff_xsec} as mentioned before. The raw distribution of the the true mass
+in different samples (without any weight) is shown in Fig.~\ref{fig:LHE_raw} (left). As expected, 
+the peak of the distribution moves to the right as the mass of the sample becomes larger, at the
+same time, the `peak' of samples with very large mass becomes wider becuse the the lower edge
+of the peak is dominated by an underlying exponential `tail'. We also see that for some lower mass
+samples (200, 300, 400 etc.), they have a cut-off beyond $\mathrm{M}\approx2500$ which means they have 0
+statistics beyong that mass range. After applying the GEN, PU, and ME weights given by their
+individual MC process and JHUGen MELA, as shown in Fig.~\ref{fig:LHE_raw},
+we see that they are consistent with each others' line shape. However, it is clear
+that:
+\begin{enumerate}[label=(\roman*)]
+  \item Lower mass samples have cut-offs in the tail region
+  \item Samples have poor statistics in mass windows that are 
+      far from their true mass (as listed in the legend).
+\end{enumerate}
+The second point is best illustrated by the wide spikes of lower mass samples near their cut-offs,
+as well as the visible fluctuations of high-mass samples in the mass region (don't be fooled by the 
+visual, the plot is in semi-log scale).
+\begin{figure}[htb]
+\begin{center}
+\subfloat[]{\includegraphics[width=.5\linewidth]{fig/LHE_Raw.pdf}}
+\subfloat[]{\includegraphics[width=.5\linewidth]{fig/LHE_PUME_wgts.pdf}}\\
+\end{center}
+\caption{Normalized distributions of LHECandMass before (left) and after (right) applying
+the weights. Together they show a need to combine samples for a wide-range, high
+statistics signal sample. Bin size = \SI{10}{\giga\electronvolt}.}
+\label{fig:LHE_raw}
+\end{figure}
+
+The goal of the combination of samples is to use all the events, but with a correction weight
+such that each sample has a higher weight in the region where they posess good statistics. Of
+course while keeping the overall normalization stays unchanged. To do this, we pick a list of
+`mass windows' with edges sitting on the true masses of the samples, and we define effective
+number of events $\mathrm{N}_\mathrm{eff} = \frac{(\sum\mathrm{wgts})^2}{\sum(\mathrm{wgts}^2)}$
+within each mass window. Here, the wgts corresponse to PU wgt, GEN wgt, K-factor, and ME weight for
+the GGH sample in consideration. For a specific GGH sample $i_0$ and its events fall in a mass 
+window $j$, $\mathrm{N}_\mathrm{eff}^{i_0j}$ is first obtained and a re-weighting factor can be computed:
+\be
+\mathrm{wgt}_\mathrm{window}^{i_0j} = 
+\frac{\mathrm{N}_\mathrm{eff}^{i_0j}}{\sum_i\mathrm{N}_\mathrm{eff}^{ij}}
+\ee
+This factor is applied to all events from sample $i_0$ within the window $j$. Conceptually,
+the effective events ensures the weight is not skewed by the difference in the overall
+normalization of samples, and in each of the mass windows, samples with more concentrated
+statistics in that window are given a higher weight. In Fig.~\ref{fig:window_wgt_matrix} (a), a
+clear dignal pattern can be seen, physically it means that samples with higher true 
+mass are given a higher weight in tail mass windows--- consistent with the expected outcome.
+\begin{figure}[htb]
+\begin{center}
+\subfloat[]{\includegraphics[width=.5\linewidth]{fig/Window_wgt_GGH.pdf}}
+\subfloat[]{\includegraphics[width=.5\linewidth]{fig/LHC_compare_windowwgt.pdf}}
+\end{center}
+\caption{Heatmap of window re-weight factors of different samples and mass windows (left);
+effects of applying window factors for the combined sample(right)}
+\label{fig:window_wgt_matrix}
+\end{figure}
+
+However, even after the normalization, there are still inconsistency in the shape as shown
+in Fig.~\ref{fig:window_wgt_matrix} (b). This is likely because the finite number of events
+and non-infinitesimal mass window size used. We introduce another correction factor for
+this small artifacts. Iteratively going through every sample, between the previous and the
+next one, derive a sample mass factor based on:
+\be
+\mathrm{wgt}_\mathrm{mass}^{i, i+1} = \frac{\sum{\mathrm{wgt}_\mathrm{i}}}{\sum{\mathrm{wgt}_\mathrm{i+1}}}
+\text{, for events that has Mass between sample mass of $i$ and $i+1$}
+\ee
 
 \begin{figure}[htb]
 \begin{center}
-\subfloat[]      {
-\includegraphics[width=.45\linewidth]{fig/LHE_Raw.pdf}
-}\quad
-\subfloat[]      {
-\includegraphics[width=.45\linewidth]{fig/LHE_PUME_wgts.pdf}
-}\\
-\subfloat[]      {
-\includegraphics[width=.45\linewidth]{fig/LHC_compare_windowwgt.pdf}
-}\quad
-\subfloat[]      {
-\includegraphics[width=.45\linewidth]{fig/LHC_compare_bothwgt.pdf}
-}
+\subfloat[]{\includegraphics[width=.5\linewidth]{fig/Mass_wgt_GGH.pdf}}
+\subfloat[]{\includegraphics[width=.5\linewidth]{fig/LHC_compare_bothwgt.pdf}}
 \end{center}
-\caption{TO BE ADDED}
+\caption{Iterative sample mass factors obtained (left) and the final combined sample (right)}
 \label{fig:LHE_rewgt}
 \end{figure}
-\todo[inline]{describe these steps}
+
+This factor corrects the high variations of overall normalizations between samples, the factors and result
+are shown in Fig.~\ref{fig:LHE_rewgt}. As expected, high mass samples need a down correction (not by a lot)
+to eliminate the deviated trend before.
+
+Finally, although we used the matrix element weights for one of the signal hypothesis, these two
+correction factors apply too all hypothesis and a plot of them without normalization are shown
+in Fig.~\ref{fig:bsi_sig_bkg_compare}. As expected, background dominates by almost an order of
+magnitude which is why the constrain is hard to obtain.
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=.70\linewidth]{fig/LHE_integral_difference.pdf}
+\includegraphics[width=.8\linewidth]{fig/LHE_integral_difference.pdf}
 \end{center}
-\caption{TO BE ADDED}
+\caption{Distributions of background, signal, and background signal interaction}
 \label{fig:bsi_sig_bkg_compare}
 \end{figure}
-\newpage\phantom{blabla}
 
 
 \section{Strategy in variable selection and binning}
