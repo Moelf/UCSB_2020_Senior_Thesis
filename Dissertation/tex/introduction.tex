@@ -136,6 +136,7 @@ In fact, the production of Higgs boson from a pair of vector boson is also relat
 decay width of Higgs boson $\Gamma_\text{\PH}$ via the propagator term. In terms of the
 differential cross section:
 \be
+\label{eqn:diff_xsec}
 \frac{\mathrm{d} \sigma_{\mathrm{vv} \rightarrow \mathrm{H} \rightarrow \mathrm{VV}}}{\mathrm{d} q_{\mathrm{H}}^{2}} 
 \sim 
 \frac{g_{\mathrm{vvH}}^{2} g_{\mathrm{HVV}}^{2}}{\left(q_{\mathrm{H}}^{2}-m_{\mathrm{H}}^{2}\right)^{2}+m_{\mathrm{H}}^{2} \Gamma_{\mathrm{H}}^{2}}
@@ -168,18 +169,71 @@ in the next few sections.
 
 
 \section{Background and signal simulation}
-[1]Agostinelli S, Allison J, Amako K, Apostolakis J, Araujo H, Arce P, et al. Geant4—a simulation toolkit. Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment 2003;506:250–303. https://doi.org/10.1016/S0168-9002(03)01368-8.
+% [1]Agostinelli S, Allison J, Amako K, Apostolakis J, Araujo H, Arce P, et al. Geant4—a simulation toolkit. Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment 2003;506:250–303. https://doi.org/10.1016/S0168-9002(03)01368-8.
 
-[2]Gritsan AV, Roskes J, Sarica U, Schulze M, Xiao M, Zhou Y. New features in the JHU generator framework. ArXiv:200209888 [Hep-Ex, Physics:Hep-Ph] 2020.
+% [2]Gritsan AV, Roskes J, Sarica U, Schulze M, Xiao M, Zhou Y. New features in the JHU generator framework. ArXiv:200209888 [Hep-Ex, Physics:Hep-Ph] 2020.
 
-[3]The NNPDF Collaboration, Ball RD, Bertone V, Carrazza S, Deans CS, Del Debbio L, et al. Parton distributions for the LHC Run II. J High Energ Phys 2015;2015:40. https://doi.org/10.1007/JHEP04(2015)040.
+% [3]The NNPDF Collaboration, Ball RD, Bertone V, Carrazza S, Deans CS, Del Debbio L, et al. Parton distributions for the LHC Run II. J High Energ Phys 2015;2015:40. https://doi.org/10.1007/JHEP04(2015)040.
 
-[4]Melia T, Nason P, Röntsch R, Zanderighi G. W+W-, WZ and ZZ production in the POWHEG BOX. J High Energ Phys 2011;2011:78. https://doi.org/10.1007/JHEP11(2011)078.
+% [4]Melia T, Nason P, Röntsch R, Zanderighi G. W+W-, WZ and ZZ production in the POWHEG BOX. J High Energ Phys 2011;2011:78. https://doi.org/10.1007/JHEP11(2011)078.
 
----
-
+% ---
+The following list contains the MC samples (by physical process) used in this thesis, of the first two
+contain (off-shell) Higgs boson in the intermediate state:
+\begin{itemize}
+\item ggZZ offshell: Gluon fusion $\textsl{g}\textsl{g} \rightarrow\mathrm{H}\rightarrow\mathrm{ZZ}$
+\item VVZZ offshell: Vector Boson Fusion (VBF) into Higgs
+\item qqZZ, qqWZ, qqWW
+\item DY: Drell-Yan process
+\item TT: $t\bar{t}$, including samples with additional vector boson (TTW/TTZ) or photon + jets (TTGJets).
+\end{itemize}
 
 Various programs are used in the long chain of simulated events production.
 \textsc{POWHEG BOX}\xspace\cite{POWHEG} is used for the signal simulation.
 \todo[inline]{A description of LO / NLO and various program and NNPDF version etc.\ involved}
 
+Before diving into the procedure in which the signal samples are separated generated and
+subsequently combined with a re-weighting procedure, it would be appropriate to give
+an account for the general idea behind the `event weight' and its significance.
+
+As described in the beginning of this section, events correspond to different physical
+processes are generated in different MC settings at different `order' of the QCD/QED physics.
+Naively, one would imagine a process where the MC can directly simulate the physics at
+LHC at a given center-of-mass energy. Unfortunately this is neither efficient nor possible:
+not possible because some physical processes (especially QCD ones) are non perturbative and
+post hoc procedures are needed to `add' physical object into the simulation. Not to mention
+that the SUSY physics we are searching for does not have a `true model' known.
+
+It is also not efficient because the processes an analysis concerns (for example, in all SUSY
+searches) usually have a tiny (if not 0) cross section compare to other common ones find at
+$\sqrt{\mathrm{S}} = \SI{13}{\tera\electronvolt}$ at LHC.\@ And it would be a waste of
+computing resources to generate the common processes over and over.
+
+\begin{table}[]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{Example of some important weights}                                                                                       \\ \hline
+Name                  & abbr.   & Description                                                                                                 \\ \hline
+Generator weight      & GEN wgt & Given by MC event generator                                                                                 \\ \hline
+Pile-up weight        & PU wgt  & Correction for the pile-up effect                                                                           \\ \hline
+Matrix element weight & ME wgt  & From generator that uses ME Likelihood approach \\ \hline
+K-factor              & Kfactor & Correction for LO cross section of QCD processes                                                         \\ \hline
+\end{tabular}
+\caption{An incomplete list of weights used in the MC events used.}
+\label{tab:MC_wgts}
+\end{table}
+
+In reality, Monte Carlo events are each given many `weights' (Tab. \ref{tab:MC_wgts}), so that
+we don't have to generate uninteresting processes, and at the same time, for the events that lack
+in number (results in poor statistics in the distribution), one can optionally generate
+extension events set for it. Also, this enables the generation of `unknown' processes which can
+be used to constrain possible new physics in a likelihood fit (against null hypothesis).
+
+In this thesis, we explicitly use K-factors and scale-up and scale-down of it to 
+obtain Electromagnetic systematics in qqZZ/qqWZ/qqWW backgrounds. For the signal processes involving
+Higgs boson, a special treatment is given to merge and obtain high statistics sample from
+multiple samples with different `true' Higgs mass. Corresponding to the $m_\mathrm{H}$ term
+in the denominator on the right hand side of Eq.~\ref{eqn:diff_xsec}.
+This approach is also necessary for generation of off-shell (Higgs) decays. The procedures 
+and the resultant combine signal sample will be discussed in the next chapter.
