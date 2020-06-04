@@ -188,9 +188,14 @@ contain (off-shell) Higgs boson in the intermediate state:
 \item TT: $t\bar{t}$, including samples with additional vector boson (TTW/TTZ) or photon + jets (TTGJets).
 \end{itemize}
 
+The MC samples for all processes except DY are produced in RunIIAutumn18MiniAOD-102X,
+DY sample is produced in RunIISummer16MiniAODv3 94X and scaled appropriately afterwards.
+
 Various programs are used in the long chain of simulated events production.
-\textsc{POWHEG BOX}\xspace\cite{POWHEG} is used for the signal simulation.
-\todo[inline]{A description of LO / NLO and various program and NNPDF version etc.\ involved}
+\textsc{POWHEG MELA v2}\xspace\cite{POWHEG} is used for the signal simulation.
+\textsc{MadGraph}\xspace is used to generated NLO samples,\textsc{Pythia}\xspace for parton
+showering and \textsc{NNPDF} 3.0 sets are used for the parton distribution functions.
+% \todo[inline]{A description of LO / NLO and various program and NNPDF version etc.\ involved}
 
 Before diving into the procedure in which the signal samples are separated generated and
 subsequently combined with a re-weighting procedure, it would be appropriate to give

@@ -5,10 +5,6 @@ how the signal sample is manipulated to produce a high statistics off-shell tail
 Finally, the binning of variables used to obtain the results is determined and defined.
 
 \section{Event selection and physical variables}
-% \begin{itemize}
-%     \item Description of homebrew event variables and their physical significance
-%     \item DJJ\_VBF prescription
-% \end{itemize}
 Proton bunches cross each at a rate of about \SI{400}{\mega\hertz} in the beam line of
 the LHC, naturally, not all of these crossings are recorded due to both technical
 limitation of the electronics as well as the fact that the vast majority of these
@@ -16,12 +12,22 @@ crossings don't produce inelastic collision that is energetic enough to be inter
 
 After the selection of Level 1 (L1) trigger and the higher level trigger (HLT), less than 1000
 events per second are permanently recorded and would go to off-line, full reconstruction. Among these,
-we only select the ones that passes certain triggers.
-\todo[inline]{give a correct account for what trigger is used for 2018
-TriggerHelpers::kDoubleMu, TriggerHelpers::kDoubleEle, Trigger Help.cc
-TriggerHelpers::kSingleMu, TriggerHelpers::kSingleEle range pt
-}
+we only select the ones that passes certain triggers:
+\begin{itemize}
+    \item HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8
+    \item HLT\_IsoMu24
+    \item HLT\_Ele23\_Ele12\_CaloIdL\_TrackIdL\_IsoVL
+    \item HLT\_DoubleEle25\_CaloIdL\_MW
+    \item HLT\_DoublePhoton70
+    \item HLT\_Ele32\_WPTight\_Gsf
+    \item HLT\_Photon200
+\end{itemize}
+Most of the trigger names are self-explaiantory, and are the starting point of the analysis. The
+purpose of the triggers is to insure events in the Corresponding samples would contain the physics
+we wanted (since run data samples are divided according to what teigger they passed).
 
+The next step is to `add' composite variables that is significant to the physics of interests as
+well as making base line cuts on the events.
 The jets are all AK4 jets unless mentioned otherwise. We shall also define a few of the
 uncommon variables in the list, and a physical motivations are given in the next few
 paragraphs.
@@ -43,12 +49,13 @@ based on more delicate physics reason, the list of base line cuts is as below:
         the signal process creates true $\met$ with neutrinos, this cut also reduce bkg such
         as DY.
     \item $\min{\abs{ \Delta\phi_{\mathrm{j}\_\met}}} > 0.25$
-    %eta muon < 2.4
-    %eta electron < 2.5
-    % \item $p_\mathrm{T}^{\ell\ell} > 55\gev$
 \end{itemize}
-% \todo[inline]{define the uncommon ones and give account for the choice}
-% \missingfigure{Show how much backgrounds are gone for maybe 2 samples}
+In addition:
+\begin{itemize}
+    \item $\eta_\mu< 2.4$
+    \item $\eta_e< 2.5$
+\end{itemize}
+are also required to reduce the detector effects at high psuedo dapidity angels.
 
 A lot of the cuts are related to angles between various physical objects presented in the
 reconstruction. The reason is simple: the signal events, where Higgs goes to ZZ and one Z
@@ -77,7 +84,24 @@ most difficult physical objects measure, they often create so-called instrumenta
 mismeasurements and it can be quite large in magnitude. However, such mismeasurements often yields large
 $\met$ in the direction of the original jet. This cuts requires angular separation since in signal process,
 the jet recoils against ZZ system.
-\newpage\phantom{blabla}
+
+We also define variables that are not cutted on, instead, are used for fitting:
+\be
+D_{j j}^{V B F}=\frac{P_{S M}^{V B F}(\vec{\Omega})}{P_{S M}^{g g}(\vec{\Omega})+P_{S M}^{V B F}(\vec{\Omega})}
+\ee
+As introduced in \cite{hig-18-002}. In short, this variable (discreminator) is sensitive
+to the VBF physics and the correlation between (angels and mass of) the outgoing jets resulted from the
+VBF topology. At the same time:
+\be
+\mtzz={\left[\sqrt{p_{\mathrm{T}, \ell\ell}^2+m_{2 \ell}^2}+\sqrt{E_{\mathrm{T}}^{\mathrm{miss}^2}+m_\mathrm{Z}^2}\right]}^2-\left[\vec{p}_{\ell\ell}+\vec{E}_{\mathrm{T}}^{\mathrm{miss}}\right]^{2}
+\ee
+is defined based on the hypothesis that the $\met$ is comprised of mainly the two neutrinos
+from one of the Z bosons. We shall see the usefulness of this variable in channels where
+not enough jets are present to construct the DJJVBF variable.
+
+On top of the cuts stated in the beginning, several $\met$ filter and lepton isolated tracks veto
+are present in the underlying analysis framework to reject events with pathological reconstruction.
+% \missingfigure{Show how much backgrounds are gone for maybe 2 samples}
 
 \section{Signal samples re-weighting}
 \label{sec:sig_rewgt}
@@ -105,22 +129,22 @@ individual MC process and JHUGen MELA, as shown in Fig.~\ref{fig:LHE_raw},
 we see that they are consistent with each others' line shape. However, it is clear
 that:
 \begin{enumerate}[label=(\roman*)]
-  \item Lower mass samples have cut-offs in the tail region
-  \item Samples have poor statistics in mass windows that are 
-      far from their true mass (as listed in the legend).
+    \item Lower mass samples have cut-offs in the tail region
+    \item Samples have poor statistics in mass windows that are 
+        far from their true mass (as listed in the legend).
 \end{enumerate}
 The second point is best illustrated by the wide spikes of lower mass samples near their cut-offs,
 as well as the visible fluctuations of high-mass samples in the mass region (don't be fooled by the 
 visual, the plot is in semi-log scale).
 \begin{figure}[htb]
-\begin{center}
-\subfloat[]{\includegraphics[width=.5\linewidth]{fig/LHE_Raw.pdf}}
-\subfloat[]{\includegraphics[width=.5\linewidth]{fig/LHE_PUME_wgts.pdf}}\\
-\end{center}
-\caption{Normalized distributions of LHECandMass before (left) and after (right) applying
-the weights. Together they show a need to combine samples for a wide-range, high
-statistics signal sample. Bin size = \SI{10}{\giga\electronvolt}.}
-\label{fig:LHE_raw}
+    \begin{center}
+        \subfloat[]{\includegraphics[width=.5\linewidth]{fig/LHE_Raw.pdf}}
+        \subfloat[]{\includegraphics[width=.5\linewidth]{fig/LHE_PUME_wgts.pdf}}\\
+    \end{center}
+    \caption{Normalized distributions of LHECandMass before (left) and after (right) applying
+        the weights. Together they show a need to combine samples for a wide-range, high
+    statistics signal sample. Bin size = \SI{10}{\giga\electronvolt}.}
+    \label{fig:LHE_raw}
 \end{figure}
 
 The goal of the combination of samples is to use all the events, but with a correction weight
@@ -142,13 +166,13 @@ statistics in that window are given a higher weight. In Fig.~\ref{fig:window_wgt
 clear dignal pattern can be seen, physically it means that samples with higher true 
 mass are given a higher weight in tail mass windows--- consistent with the expected outcome.
 \begin{figure}[htb]
-\begin{center}
-\subfloat[]{\includegraphics[width=.5\linewidth]{fig/Window_wgt_GGH.pdf}}
-\subfloat[]{\includegraphics[width=.5\linewidth]{fig/LHC_compare_windowwgt.pdf}}
-\end{center}
-\caption{Heatmap of window re-weight factors of different samples and mass windows (left);
-effects of applying window factors for the combined sample(right)}
-\label{fig:window_wgt_matrix}
+    \begin{center}
+        \subfloat[]{\includegraphics[width=.5\linewidth]{fig/Window_wgt_GGH.pdf}}
+        \subfloat[]{\includegraphics[width=.5\linewidth]{fig/LHC_compare_windowwgt.pdf}}
+    \end{center}
+    \caption{Heatmap of window re-weight factors of different samples and mass windows (left);
+    effects of applying window factors for the combined sample(right)}
+    \label{fig:window_wgt_matrix}
 \end{figure}
 
 However, even after the normalization, there are still inconsistency in the shape as shown
@@ -162,12 +186,12 @@ next one, derive a sample mass factor based on:
 \ee
 
 \begin{figure}[htb]
-\begin{center}
-\subfloat[]{\includegraphics[width=.5\linewidth]{fig/Mass_wgt_GGH.pdf}}
-\subfloat[]{\includegraphics[width=.5\linewidth]{fig/LHC_compare_bothwgt.pdf}}
-\end{center}
-\caption{Iterative sample mass factors obtained (left) and the final combined sample (right)}
-\label{fig:LHE_rewgt}
+    \begin{center}
+        \subfloat[]{\includegraphics[width=.5\linewidth]{fig/Mass_wgt_GGH.pdf}}
+        \subfloat[]{\includegraphics[width=.5\linewidth]{fig/LHC_compare_bothwgt.pdf}}
+    \end{center}
+    \caption{Iterative sample mass factors obtained (left) and the final combined sample (right)}
+    \label{fig:LHE_rewgt}
 \end{figure}
 
 This factor corrects the high variations of overall normalizations between samples, the factors and result
@@ -176,23 +200,59 @@ to eliminate the deviated trend before.
 
 Finally, although we used the matrix element weights for one of the signal hypothesis, these two
 correction factors apply too all hypothesis and a plot of them without normalization are shown
-in Fig.~\ref{fig:bsi_sig_bkg_compare}. As expected, background dominates by almost an order of
-magnitude which is why the constrain is hard to obtain.
-
+in Fig.~\ref{fig:bsi_sig_bkg_compare}. As expected, background exceeds signal by more than 100\%
+which is why the constrain is hard to obtain.
 \begin{figure}[htb]
-\begin{center}
-\includegraphics[width=.8\linewidth]{fig/LHE_integral_difference.pdf}
-\end{center}
-\caption{Distributions of background, signal, and background signal interaction}
-\label{fig:bsi_sig_bkg_compare}
+    \begin{center}
+        \includegraphics[width=.7\linewidth]{fig/LHE_integral_difference.pdf}
+    \end{center}
+    \caption{Distributions of background, signal, and background signal interaction}
+    \label{fig:bsi_sig_bkg_compare}
 \end{figure}
 
-
-\section{Strategy in variable selection and binning}
+\section{Strategy in variable selection and binning and systematical uncertainties}
+After prepaing the signal samples and decided on the event selection criteria, we move on to
+decide on the variables and their (2D hitosgram, as shown in Fig.~\ref{fig:templates_demo}) `binning' before a combined-limits
+fit can be applied. As discuessed in earlier sections, one of the more inventive variables
+newly introduced specifically for the analysis is the DJJVBF discriminator. However, it is
+clear that this variable is undefined for events with $\njets < 2$. To
+not `waste' any statistical significance, we use $\met$ in its place for the
+$\njets = 0,1$ categories. In total, we have 2 ($ee$ or $\mu\mu$) $\times$ 4 ($\njets = 0,1,2,3+$) = 8
+channels to consider when making histogram templates.
+Bin edges for different categories in number of jets are as the following:
+\begin{itemize} 
+    \item $\njets < 2$
+        \begin{itemize} 
+            \item $\mtzz$ = 150, 300, 400, 600, 800, 1000, 13000
+            \item KD1 = DJJVBF = 0, 0.2, 0.4, 0.6, 0.8, 1
+        \end{itemize}
+    \item $\njets >= 2$
+        \begin{itemize} 
+            \item $\mtzz$ = 150, 300, 400, 600, 800, 1000, 13000
+            \item KD1 = $\met$ = 125, 200, 280, 420, 500, 800, 13000
+        \end{itemize}
+\end{itemize}
+The higher mass ($\mtzz$) bins are wider becasue samples
+are having difficulty filling them up due to physical reasons (especially for backgrounds) 
+and our cuts. As shown in Fig.~\ref{fig:templates_demo}, the relative error (err/counts) of each
+bin in the histogram templates are displayed, a balance between significance and uncertainty is
+obtained. We use the above binning for all samples and 8 channels that are considered in this
+thesis. See Appendix~\ref{apdx:templates_hist} for a compilation of template histograms of GGH sample.
 \begin{figure}[htb]
-\begin{center}
-\includegraphics[width=.90\linewidth]{fig/binning_placeholder.png}
-\end{center}
-\label{fig:sig_rewgt}
+    \begin{center}
+        \subfloat[]{\includegraphics[width=.5\linewidth]{fig/ggZZ_templates/ggZZ_2e2nu_nj2_Bkg.pdf}}
+        \subfloat[]{\includegraphics[width=.5\linewidth]{fig/ggZZ_templates/ggZZ_2e2nu_nj2_Sig.pdf}}
+    \end{center}
+    \caption{Background (left) and Signal (right) histogram templates for $2e2\nu$ with $\njets = 2$.}
+    \label{fig:templates_demo}
 \end{figure}
-\todo[inline]{make plots publication quality and give quantitative justification for choice}
+
+Although the analysis presented in the thesis only considers MC samples, a few systematics still apply:
+\begin{itemize}
+    \item Luminosoty: GGH\_ZZ, VBF\_ZZ, qqZZ, qqWZ
+    \item NRB Estimation: TT
+    \item Branching Ratio of Higgs to ZZ to 4l: GGH\_ZZ, VBF\_ZZ
+    \item K-fatcor of backgroun gluongluon parameter
+\end{itemize}
+Most of them are assigned with a $ln(N)$ uncertainty of 1-$\sigma$ or 10\% except the k-factor
+which is a parameters directly multiplied with backgrounds Parton Distrubution Function (PDF).
