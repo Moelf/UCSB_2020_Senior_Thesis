@@ -1,18 +1,18 @@
 % Methods
 In this chapter, a description of event selection is given, as well as definitions of
 key physical variables and how they are used to select events. Then, a procedure regarding
-how the signal sample is manipulated to produce a high statistics off-shell tail is described.
+how the signal sample is manipulated to produce a high statistics off-shell Higgs sample is presented.
 Finally, the binning of variables used to obtain the results is determined and defined.
 
 \section{Event selection and physical variables}
 Proton bunches cross each at a rate of about \SI{400}{\mega\hertz} in the beam line of
 the LHC, naturally, not all of these crossings are recorded due to both technical
 limitation of the electronics as well as the fact that the vast majority of these
-crossings don't produce inelastic collision that is energetic enough to be interesting to us.
+crossings don't produce inelastic collision that is energetic enough to be interesting.
 
 After the selection of Level 1 (L1) trigger and the higher level trigger (HLT), less than 1000
 events per second are permanently recorded and would go to off-line, full reconstruction. Among these,
-we only select the ones that passes certain triggers:
+we only select the ones that passes certain HL triggers:
 \begin{itemize}
     \item HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8
     \item HLT\_IsoMu24
@@ -22,18 +22,19 @@ we only select the ones that passes certain triggers:
     \item HLT\_Ele32\_WPTight\_Gsf
     \item HLT\_Photon200
 \end{itemize}
-Most of the trigger names are self-explaiantory, and are the starting point of the analysis. The
-purpose of the triggers is to insure events in the Corresponding samples would contain the physics
-we wanted (since run data samples are divided according to what teigger they passed).
+Most of the trigger names are self-explanatory, and are the starting point of the analysis. The
+purpose of the triggers is to insure events in the corresponding samples would contain the physics
+we wanted (since run data samples are divided according to what triggers they passed).
 
 The next step is to `add' composite variables that is significant to the physics of interests as
-well as making base line cuts on the events.
-The jets are all AK4 jets unless mentioned otherwise. We shall also define a few of the
-uncommon variables in the list, and a physical motivations are given in the next few
+well as making base-line cuts on the events.
+The jets are all AK4 jets unless mentioned otherwise, and a special type of jets, called B-tagged
+jets are produced using DeepFlavour algorithm.\cite{btag} We shall also define a few of the
+uncommon variables in the list, and physical motivations are given in the following
 paragraphs.
 
-After selecting mandating passing certain triggers, we make a base line cut in the variables
-based on more delicate physics reason, the list of base line cuts is as below:
+After mandating passage of the set of triggers above, based on more delicate physics reasons, 
+the baseline cuts are:
 \begin{itemize}
     \item No ak4-jet b-tagged jet
     \item Both leptons have $p_\mathrm{T} > \SI{25}{\giga\electronvolt}$
@@ -50,46 +51,45 @@ based on more delicate physics reason, the list of base line cuts is as below:
         as DY.
     \item $\min{\abs{ \Delta\phi_{\mathrm{j}\_\met}}} > 0.25$
 \end{itemize}
-In addition:
+In addition, to reduce the detector effects at high pseudo rapidity angels:
 \begin{itemize}
     \item $\eta_\mu< 2.4$
     \item $\eta_e< 2.5$
 \end{itemize}
-are also required to reduce the detector effects at high psuedo dapidity angels.
 
 A lot of the cuts are related to angles between various physical objects presented in the
 reconstruction. The reason is simple: the signal events, where Higgs goes to ZZ and one Z
-goes to 2 charged lepton the other goes to 2 neutrinos, ideally would have the two Z's 
-`back-to-back' in Higgs' rest frame leading to a large angel in the transverse plane. (
-assuming the $\met$ mainly comes from the two neutrinos, of course)
+goes to 2 charged leptons and the other goes to 2 neutrinos, ideally would have the two Z's 
+`back-to-back' in Higgs boson's rest frame, leading to a large angel in the transverse plane.
+% ( assuming the $\met$ mainly comes from the two neutrinos, of course)
 
-Furthermore, in background events which do not mandate this kinematic feature, the
-correlation in the directions of $\met$ and of observable physical objects is weaker.
+Furthermore, in background events which do not contain this kinematic feature, the
+correlation in the directions of $\met$ and the transverse momentum of the leptons is weaker.
 
 To use this kinematic feature to increase signal to background ratio, we define 
 $\abs{\Delta\phi_{\ell\ell\_\met}}$ as the azimuthal angel (perpendicular to 
 the beam line) between the di-lepton system and the transverse missing energy. In the
 signal events that produce 0 jet, this variable should be $\pi$. The cut is lowered to $1.0$ 
-due to the finding that in the (not so rare) case where there are jet(s) recoiling against
-the ZZ system, the variable dips quite low.
+due to the finding that in the (not so rare) cases where there are jet(s) recoiling against
+the ZZ system, this variable can go quite low.
 
-This leads to the next variable on the list $\abs{\Delta\phi_{\ell\ell\mathrm{Jets}\_\met}}$, which
+This leads to the next variable on the list, $\abs{\Delta\phi_{\ell\ell\mathrm{Jets}\_\met}}$, which
 is almost the same except that we add all jets' momentum into the di-lepton system to account
-for the events that have produced jets, which in turn would cause the angel be lower in such
-a multi-body final states.
+for the events that have produced jets, which in turn would cause the angel be lower in
+a multi-body final state.
 
 Finally, $\min{\abs{ \Delta\phi_{\mathrm{j}\_\met}}}$ is the minimum azimuthal angel difference between
-any of the jet (that passes cuts) and the $\met$, it exist because jets are as mentioned, one of the 
+any of the jet (that passes cuts) and the $\met$, it exist because jets are one of the 
 most difficult physical objects measure, they often create so-called instrumental $\met$ due to jet
-mismeasurements and it can be quite large in magnitude. However, such mismeasurements often yields large
+mis-measurements and it can be quite large in magnitude. However, such mis-measurements often yield large
 $\met$ in the direction of the original jet. This cuts requires angular separation since in signal process,
 the jet recoils against ZZ system.
 
-We also define variables that are not cutted on, instead, are used for fitting:
+We also define variables that are not cut on, but are used for fitting:
 \be
 D_{j j}^{V B F}=\frac{P_{S M}^{V B F}(\vec{\Omega})}{P_{S M}^{g g}(\vec{\Omega})+P_{S M}^{V B F}(\vec{\Omega})}
 \ee
-As introduced in \cite{hig-18-002}. In short, this variable (discreminator) is sensitive
+As introduced in \cite{hig-18-002}. In short, this variable (discriminator) is sensitive
 to the VBF physics and the correlation between (angels and mass of) the outgoing jets resulted from the
 VBF topology. At the same time:
 \be
@@ -110,21 +110,21 @@ are present in the underlying analysis framework to reject events with pathologi
 %     \item the need for pieceing together samples with different LHE Mass
 %     \item results (also see appendix A)
 % \end{itemize}
-Extra attnsion was paied to the off-shell Higgs sample used in this thesis and two different kinds
-of re-weigthing of the simulated events are applied in achiveing a high quality sample with wide
-mass spectrum way beyong the mass of Higgs ($\approx \SI{125}{\giga\electronvolt}$). We use the
-gluon fusion Higgs (ggH) sample to illustrae the procedures, the same procedures are applied to
+Extra attention was given to the off-shell Higgs sample used in this thesis and two different kinds
+of re-weighting of the simulated events are applied in to produced a MC sample with wide
+mass spectrum way beyond the mass of Higgs ($\approx \SI{125}{\giga\electronvolt}$). We use the
+gluon fusion Higgs (ggH) sample to illustrate the procedures, the same procedures are applied to
 the VBF samples as well.
 
-We start by generating separate samples with different Higgs mass, which we call LHECandMass in the
-following plots. This is the mass of Higgs terms appears in the propagator on 
-the R.H.S of Eq.~\ref{eqn:diff_xsec} as mentioned before. The raw distribution of the the true mass
+We start by generating separate samples with different Higgs mass (LHECandMass).
+This is the mass of Higgs terms appears in the propagator on 
+the R.H.S of Eq.~\ref{eqn:diff_xsec} as mentioned before. The raw distribution of the true mass
 in different samples (without any weight) is shown in Fig.~\ref{fig:LHE_raw} (left). As expected, 
 the peak of the distribution moves to the right as the mass of the sample becomes larger, at the
-same time, the `peak' of samples with very large mass becomes wider becuse the the lower edge
+same time, the `peak' of samples with very large mass are wider because the lower edge
 of the peak is dominated by an underlying exponential `tail'. We also see that for some lower mass
 samples (200, 300, 400 etc.), they have a cut-off beyond $\mathrm{M}\approx2500$ which means they have 0
-statistics beyong that mass range. After applying the GEN, PU, and ME weights given by their
+statistics beyond that mass range. After applying the GEN, PU, and ME weights given by their
 individual MC process and JHUGen MELA, as shown in Fig.~\ref{fig:LHE_raw},
 we see that they are consistent with each others' line shape. However, it is clear
 that:
@@ -152,7 +152,7 @@ such that each sample has a higher weight in the region where they posess good s
 course while keeping the overall normalization stays unchanged. To do this, we pick a list of
 `mass windows' with edges sitting on the true masses of the samples, and we define effective
 number of events $\mathrm{N}_\mathrm{eff} = \frac{(\sum\mathrm{wgts})^2}{\sum(\mathrm{wgts}^2)}$
-within each mass window. Here, the wgts corresponse to PU wgt, GEN wgt, K-factor, and ME weight for
+within each mass window. Here, the wgts corresponds to the product of PU wgt, GEN wgt, K-factor, and ME weight for
 the GGH sample in consideration. For a specific GGH sample $i_0$ and its events fall in a mass 
 window $j$, $\mathrm{N}_\mathrm{eff}^{i_0j}$ is first obtained and a re-weighting factor can be computed:
 \be
@@ -160,10 +160,10 @@ window $j$, $\mathrm{N}_\mathrm{eff}^{i_0j}$ is first obtained and a re-weightin
 \frac{\mathrm{N}_\mathrm{eff}^{i_0j}}{\sum_i\mathrm{N}_\mathrm{eff}^{ij}}
 \ee
 This factor is applied to all events from sample $i_0$ within the window $j$. Conceptually,
-the effective events ensures the weight is not skewed by the difference in the overall
+the effective number of events ensures the weight is not skewed by the difference in the overall
 normalization of samples, and in each of the mass windows, samples with more concentrated
 statistics in that window are given a higher weight. In Fig.~\ref{fig:window_wgt_matrix} (a), a
-clear dignal pattern can be seen, physically it means that samples with higher true 
+clear diagonal pattern can be seen, physically it means that samples with higher true 
 mass are given a higher weight in tail mass windows--- consistent with the expected outcome.
 \begin{figure}[htb]
     \begin{center}
@@ -175,7 +175,7 @@ mass are given a higher weight in tail mass windows--- consistent with the expec
     \label{fig:window_wgt_matrix}
 \end{figure}
 
-However, even after the normalization, there are still inconsistency in the shape as shown
+However, even with the unit normalization, there are still inconsistency in the shape as shown
 in Fig.~\ref{fig:window_wgt_matrix} (b). This is likely because the finite number of events
 and non-infinitesimal mass window size used. We introduce another correction factor for
 this small artifacts. Iteratively going through every sample, between the previous and the
@@ -202,10 +202,10 @@ Finally, 1.098946 is multiplied to the weights of all ggZZ processes (all of BKG
 of GGH sample) as a K factor for Next-to-next-to-leading-order (NNLO) $\rightarrow$ 
 Next-to-next-to-next-to-leading-order (N3LO).
 
-Although we used the matrix element weights for one of the signal hypothesis, these two
+Although we used the particular matrix element weights for one of the signal hypothesis, these two
 correction factors apply too all hypothesis and a plot of them without normalization are shown
 in Fig.~\ref{fig:bsi_sig_bkg_compare}. As expected, background exceeds signal by more than 100\%
-which is why the constrain is hard to obtain.
+which is partially why the constrain is hard to obtain.
 \begin{figure}[htb]
     \begin{center}
         \includegraphics[width=.7\linewidth]{fig/LHE_integral_difference.pdf}
@@ -215,9 +215,9 @@ which is why the constrain is hard to obtain.
 \end{figure}
 
 \section{Strategy in variable selection and binning and systematical uncertainties}
-After prepaing the signal samples and decided on the event selection criteria, we move on to
-decide on the variables and their (2D hitosgram, as shown in Fig.~\ref{fig:templates_demo}) `binning' before a combined-limits
-fit can be applied. As discuessed in earlier sections, one of the more inventive variables
+After preparing the signal samples and decided on the event selection criteria, we move on to
+decide on the variables and their (2D histogram, as shown in Fig.~\ref{fig:templates_demo}) `binning' before a combined-limits
+fit can be applied. As discussed in earlier sections, one of the more inventive variables
 newly introduced specifically for the analysis is the DJJVBF discriminator. However, it is
 clear that this variable is undefined for events with $\njets < 2$. To
 not `waste' any statistical significance, we use $\met$ in its place for the
@@ -236,12 +236,16 @@ Bin edges for different categories in number of jets are as the following:
             \item KD1 = $\met$ = 125, 200, 280, 420, 500, 800, 13000
         \end{itemize}
 \end{itemize}
-The higher mass ($\mtzz$) bins are wider becasue samples
-are having difficulty filling them up due to physical reasons (especially for backgrounds) 
-and our cuts. As shown in Fig.~\ref{fig:templates_demo}, the relative error (err/counts) of each
+The higher mass ($\mtzz$) bins are wider because samples
+have difficulty filling them due to physical reasons (especially for backgrounds) 
+and the cuts being applied. As shown in Fig.~\ref{fig:templates_demo}, the relative error (err/counts) of each
 bin in the histogram templates are displayed, a balance between significance and uncertainty is
 obtained. We use the above binning for all samples and 8 channels that are considered in this
 thesis. See Appendix~\ref{apdx:templates_hist} for a compilation of template histograms of GGH sample.
+
+For low-yield background samples, due to the nature of NLO samples, bins sometimes would have negative
+content. To mitigate it's effect on the likelihood fitting (pathological), we replace the bin content
+by (Integral of the histogram) $\times \num{e-5}$.
 \begin{figure}[htb]
     \begin{center}
         \subfloat[]{\includegraphics[width=.5\linewidth]{fig/ggZZ_templates/ggZZ_2e2nu_nj2_Bkg.pdf}}
@@ -251,7 +255,7 @@ thesis. See Appendix~\ref{apdx:templates_hist} for a compilation of template his
     \label{fig:templates_demo}
 \end{figure}
 
-Although the analysis presented in the thesis only considers MC samples, a few systematics still apply:
+Systematical uncertainties are also included in the fitting:
 \begin{itemize}
     \item Luminosoty: GGH\_ZZ, VBF\_ZZ, qqZZ, qqWZ
     \item NRB Estimation: TT
