@@ -17,10 +17,10 @@ massive particles and could be a window to probe BSM the physics,
 as discussed in Section~\ref{sec:physics_offshell}.
 
 The LHC has been operating at the same energy for the past 3 years (2016-2018) wtih 
-the delivered luminosity ramping up in each year.\cite{xampl} In this analysis, we will be using
+the delivered luminosity ramping up in each year\cite{luminosity}. In this analysis, we will be using
 mostly simulation that were produced corresponding to Run period 2018, but scaled to 
 \SI{137.15}{\per\femto\barn} to simulate the expected result by using the entire Run 2 data,
-for the Compact Muon Solenoid (CMS) detector.\cite{xampl}
+for the Compact Muon Solenoid (CMS) detector.
 
 \section{The CMS Detector}
 % [1]CMS Collaboration. Performance of CMS muon reconstruction in pp collision events at sqrt(s) = 7 TeV. J Inst 2012;7:P10002–P10002. https://doi.org/10.1088/1748-0221/7/10/P10002.
@@ -34,12 +34,12 @@ The CMS is one of the two general purpose detectors built around LHC (the other 
 is `compact' only when comparing to the ATLAS detector and is in fact heavier than the latter.
 Though we are not using the data accumulated by the CMS detector, the simulated events are
 reconstructed based on the material interaction and electronics responses of the real detector using the
-\gf~package.\cite{geant4}
+\gf~package\cite{geant4}.
 
 The defining feature of the CMS detector is the solenoid (as in its name) around the beam line, in the
 middle of the detctor.
 This superconducting solenoid produces a \SI{4}{\tesla} magnetic field and is 
-\SI{12.5}{\meter} long free bore.\cite{validation_cms} This feature allows the track of
+\SI{12.5}{\meter} long free bore\cite{solenoid_map}. This feature allows the track of
 any charged particle (given the momentum is not ridiculously high) to be bent when penetrating
 the detector layers and leave behind hit points that provide information regarding the particle's 
 electric charge.
@@ -74,7 +74,7 @@ detector to excel in muon measurements and is the primary reason for the overall
 
 Zooming out from the individual components of the detector, the complete (physics object) reconstruction
 process is complex and sometimes requires information from multiple parts of the detector, this
-algorithm is called the Particle Flow (PF)~\cite{particle_flow}. While the energy of simple and neutral 
+algorithm is called the Particle Flow (PF)\cite{particle_flow}. While the energy of simple and neutral 
 objects such as photon is directly measured by the ECAL (with correction for zero-suppression), electron measurements
 need the information from the inner tracker (to determine charge and momentum), energy at the ECAL, and
 also sum of the energy of photons produced by bremsstrahlung compatible with the electron's track.
@@ -116,15 +116,16 @@ the SM and the BSM (in some models) as some SUSY particles can decay into it or 
 bosons production rate than the SM expects. In any of these cases, the basic properties of the SM Higgs
 boson remain important.
 
-Many properties are well measured, such as it's mass and spin \cite{higgs_papers}, others, however,
+Many properties are well measured, such as it's mass and spin\cite{cms_higgs}, others, however,
 have not entered the realm of `precision' physics so far. One of them is the decay width of
 the Higgs boson, which is of course associated to the particle's half-life. The SM predicts
 that the Higgs boson to have a decay width of \SI{4.07}{\mega\electronvolt}. The problem is
 that the energy resolution of the CMS detector, which is around $\mathcal{O}(1)$\si{\giga\electronvolt}
 for the di-photon or 4-leptons final states, is not even remotely close to that prediction.
 
-One of the ways suggested by the theorists to indirectly measure this decay width is called the
-off-shell metho. When a Higgs boson decays into two vector bosons (VV) (in the scope of this thesis, two Z bosons),
+One of the ways suggested by the theorists\cite{offshell_theory1, offshell_theory2} 
+to indirectly measure this decay width is called the
+off-shell method. When a Higgs boson decays into two vector bosons (VV) (in the scope of this thesis, two Z bosons),
 one of the them has to be off-shell, or the Higgs boson is off-shell, this is because
 $m_\text{H}\approx\SI{125}{\giga\electronvolt}$ is smaller than the 
 mass of two \PW{}'s($\approx\SI{160}{\giga\electronvolt}$) 
@@ -134,7 +135,7 @@ $\sigma_{\mathrm{H}\rightarrow\mathrm{VV}}$ is enhanced as the mass of Higgs bos
 the on-shell VV mass.  
 
 In fact, the production of Higgs boson from a pair of vector boson is also related to the
-decay width of Higgs boson $\Gamma_\text{\PH}$ via the `propagator'. In terms of the
+decay width of Higgs boson $\Gamma_\text{\PH}$ via the `propagator'\cite{offshell_poc}. In terms of the
 differential cross section:
 \be
 \label{eqn:diff_xsec}
@@ -193,9 +194,10 @@ The MC samples for all processes except DY are produced in RunIIAutumn18MiniAOD-
 DY sample is produced in RunIISummer16MiniAODv3 94X and scaled appropriately afterwards.
 
 Various programs are used in the long chain of simulated events production.
-\textsc{POWHEG MELA v2}\xspace\cite{POWHEG} is used for the signal simulation.
-\textsc{MadGraph}\xspace is used to generated NLO samples, \textsc{Pythia}\xspace for parton
-showering and \textsc{NNPDF} 3.0 sets are used for the parton distribution functions.
+\textsc{POWHEG MELA v2}\xspace\cite{powhegv2} is used for the signal simulation.
+\textsc{MadGraph}\xspace\cite{madgraph} is used to generated NLO samples, 
+\textsc{Pythia}\xspace\cite{pythia} for parton
+showering and \textsc{NNPDF} 3.0\cite{nnpdf} sets are used for the parton distribution functions.
 % \todo[inline]{A description of LO / NLO and various program and NNPDF version etc.\ involved}
 
 Before diving into the procedure in which the signal samples are generated separately and
