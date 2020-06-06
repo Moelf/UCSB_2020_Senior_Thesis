@@ -1,7 +1,7 @@
 %Introduction
 This chapter contains a brief introduction of the experimental aspect of
 LHC physics, the CMS detector, and the physics behind the off-shell methods
-for constraining Higgs decay width. Finally, a very brief technical account for
+for constraining the Higgs decay width. Finally, a very brief technical account for
 the Monte Carlo (MC) events production is also presented.
 
 \section{Physics at LHC}
@@ -21,6 +21,13 @@ the delivered luminosity ramping up in each year\cite{luminosity}. In this analy
 mostly simulation that were produced corresponding to Run period 2018, but scaled to 
 \SI{137.15}{\per\femto\barn} to simulate the expected result by using the entire Run 2 data,
 for the Compact Muon Solenoid (CMS) detector.
+
+\textcolor{blue}{The work presented here is part of a wider endeavor to measure the decay width as well
+    as test for (the strength of) BSM contributions by studying the off-shell Higgs production. A pure
+    MC based analysis is conducted here but with many of the same tools and studies needed for the final
+    result, as well as the expected value of the final constraint (for the entire Run 2).
+}
+\todo[inline]{maybe move this to abstract?}
 
 \section{The CMS Detector}
 % [1]CMS Collaboration. Performance of CMS muon reconstruction in pp collision events at sqrt(s) = 7 TeV. J Inst 2012;7:P10002–P10002. https://doi.org/10.1088/1748-0221/7/10/P10002.
@@ -59,14 +66,15 @@ which includes electrons and muons (half-life of tauon is too short to interact 
 the detector directly);
 `final-state' here means they are the end products of decay chain and are recorded by detector
 components directly. If we concentrate on the red and blue lines in Fig.~\ref{fig:CMS_Slice}, we
-can see that for the electrons (red), they leave a few hits that resemble a curved
+can see that \cc{for the} electrons (red) leave a few hits that resemble a curved
 track within the Silicon Tracker layer and are stopped at the Electromagnetic Calorimeter
 (ECAL). 
 
-For the muons (blue line in Fig.~\ref{fig:CMS_Slice}), they largely go through all the interior layers unhinged due to their
-high mass; pay close attention to the `S'-shaped curve, this is due to the opposite magnetic
+For the muons (blue line in Fig.~\ref{fig:CMS_Slice}), they largely go through all the interior layers unhinged 
+due to their high mass \add{and the fact that they only interact electromagnetically};
+pay close attention to the `S'-shaped curve, this is due to the opposite magnetic
 field outside of the superconducting solenoid. Although information such as momentum relies on
-hits on the silicon trackers, the hits in the muon chambers and a matching trajectory is needed 
+hits on the silicon trackers, the hits in the muon chambers and a matching trajectory are needed 
 for the object to be reconstructed as a muon. Notice how the
 muon chambers occupy more than half of the detector by size, such design allows the CMS 
 detector to excel in muon measurements and is the primary reason for the overall design.
@@ -80,9 +88,9 @@ need the information from the inner tracker (to determine charge and momentum), 
 also sum of the energy of photons produced by bremsstrahlung compatible with the electron's track.
 
 For gluons and quarks that come out of the interaction vertex, due to quark confinement, the detector 
-is only be able to `see' a narrow `spray' of final state (stable) particles who are clustered into objects
-called `jets'.
-There are different algorithms and criterias to combine a collection of measurements into a single jet,
+is only be able to `see' a narrow `spray' of final state (stable) particles that, subsequently, 
+are clustered into objects called `jets'.
+There are different algorithms and criteria to combine a collection of measurements into a single jet,
 in the CMS at the moment, the anti-$k_t$ clustering algorithm is used. In short, the algorithm would cluster objects
 in a cone (meaning it has a fixed $\eta-\phi$ space) originated from the vertex according to some parameters.
 The algorithm is resilient to QCD effects that would cause jets to split, such as shown in Fig.
@@ -115,6 +123,13 @@ the SM and the BSM (in some models) as some SUSY particles can decay into it or 
 , or simply have a BSM production Feynman diagram that leads to more a higher Higgs
 bosons production rate than the SM expects. In any of these cases, the basic properties of the SM Higgs
 boson remain important.
+
+\add{The importance of studying the Higgs also comes from the fact that it is an `add-on' to the SM as
+a mass generation mechanism for gauge bosons. The Higgs sector of the SM is not well tested, 
+and, in theory could be more complicated than the minimal SM suggests: multiple Higgs bosons, the observed
+Higgs being a composite particle. Interestingly, if not composite, the observed Higgs boson would be the only
+spin zero fundamental particle we know.}
+
 
 Many properties are well measured, such as it's mass and spin\cite{cms_higgs}, others, however,
 have not entered the realm of `precision' physics so far. One of them is the decay width of
@@ -151,7 +166,7 @@ into event rate that can be (in theory) measured in experiments:
 \begin{split}
 &N_{\mathrm{vv} \rightarrow \mathrm{H} \rightarrow \mathrm{VV}^{*}}^{\text{on-shell}} \sim \frac{g_{\mathrm{vvH}}^{2} g_{\mathrm{HVV}}^{2}}{m_{\mathrm{H}} \Gamma_{\mathrm{H}}} \sim \mu_{\mathrm{vvH}}
 \\
-&N_{\mathrm{vv} \rightarrow \mathrm{H}^{*} \rightarrow \mathrm{VV}}^{\text{off-shell}} \sim \frac{g_{\mathrm{vvH}}^{2} g_{\mathrm{HVV}}^{2}}{\left(2 m_{\mathrm{V}}\right)^{2}} \sim \mu_{\mathrm{vvH}} \cdot \Gamma_{\mathrm{H}}
+&N_{\mathrm{vv} \rightarrow \mathrm{H}^{*} \rightarrow \mathrm{VV}}^{\text{off-shell}} \sim \frac{g_{\mathrm{vvH}}^{2} g_{\mathrm{HVV}}^{2}}{\left(q_{\mathrm{H}}^{2}-m_{\mathrm{H}}^{2}\right)^{2}} \sim \mu_{\mathrm{vvH}} \cdot \Gamma_{\mathrm{H}}
 \end{split}
 \end{equation}
 The key takeaway is that, up to some correction factors, the event rate of off-shell Higgs scales
@@ -180,7 +195,7 @@ in the next few sections.
 % [4]Melia T, Nason P, Röntsch R, Zanderighi G. W+W-, WZ and ZZ production in the POWHEG BOX. J High Energ Phys 2011;2011:78. https://doi.org/10.1007/JHEP11(2011)078.
 
 % ---
-The following list contains the MC samples (by physical process) used in this thesis, of the first two
+The following list contains the MC samples (by physical process) used in this thesis, the first two
 contain (off-shell) Higgs boson in the intermediate state:
 \begin{itemize}
 \item ggZZ offshell: Gluon fusion $\textsl{g}\textsl{g} \rightarrow\mathrm{H}\rightarrow\mathrm{ZZ}$
@@ -191,7 +206,9 @@ contain (off-shell) Higgs boson in the intermediate state:
 \end{itemize}
 
 The MC samples for all processes except DY are produced in RunIIAutumn18MiniAOD-102X,
-DY sample is produced in RunIISummer16MiniAODv3 94X and scaled appropriately afterwards.
+DY sample is produced in RunIISummer16MiniAODv3 94X and scaled appropriately afterwards. \add{As their names
+suggest, each year in the Run 2 (2016-2018) has their separate MC samples since the running condition (
+the LHC) and the condition of the CMS can change from year to year, though the physics remains the same.}
 
 Various programs are used in the long chain of simulated events production.
 \textsc{POWHEG MELA v2}\xspace\cite{powhegv2} is used for the signal simulation.
@@ -209,8 +226,8 @@ processes are generated in different MC consigurations at different `order' of t
 Naively, one would imagine a process where the MC can directly simulate the physics at
 the LHC at a given center-of-mass energy. Unfortunately this is neither efficient nor possible:
 not possible because some physical processes (especially QCD ones) are non perturbative and
-post hoc procedures are needed to `add' physical object into the simulation. Not to mention
-that the SUSY physics we are searching for does not have a `true model'.
+post hoc procedures are needed to `add' physical object into the simulation. \cc{Not to mention
+that the SUSY physics we are searching for does not have a `true model'.}
 
 It is also not efficient because the processes an analysis concerns (for example, in all SUSY
 searches) usually have a tiny (if not 0) cross sections compare to other common ones that can be

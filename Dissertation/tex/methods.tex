@@ -12,7 +12,7 @@ crossings don't produce inelastic collision that is energetic enough to be inter
 
 After the selection of Level 1 (L1) trigger and the higher level trigger (HLT), less than 1000
 events per second are permanently recorded and would go to off-line, full reconstruction. Among these,
-we only select the ones that passes certain HL triggers:
+we only select the ones that passes certain HLT triggers:
 \begin{itemize}
     \item HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8
     \item HLT\_IsoMu24
@@ -29,7 +29,10 @@ we wanted (since run data samples are divided according to what triggers they pa
 The next step is to `add' composite variables that is significant to the physics of interests as
 well as making base-line cuts on the events.
 The jets are all AK4 jets unless mentioned otherwise, and a special type of jets, called B-tagged
-jets are produced using DeepFlavour algorithm.\cite{deepflavour} We shall also define a few of the
+jets are \cc{produced} identified using the DeepFlavour algorithm.\cite{deepflavour} \add{These are the jets
+likely originated from relatively long-lived bottom quarks judging from a combination of many measurements 
+including the displacement of verteces.} 
+We shall also define a few of the
 uncommon variables in the list, and physical motivations are given in the following
 paragraphs.
 
@@ -57,7 +60,9 @@ In addition, to reduce the detector effects at high pseudo rapidity angels:
     \item $\eta_e< 2.5$
 \end{itemize}
 
-A lot of the cuts are related to angles between various physical objects presented in the
+\add{First, a veto on the b-tagged jet is placed to reduce the background events originated from a pair
+of top quarts ($t\bar{t}$) since top quark always decays to a bottom quark. This cut also doesn't
+reduce signal efficiency at all.} Also, many of the cuts are related to angles between various physical objects presented in the
 reconstruction. The reason is simple: the signal events, where Higgs goes to ZZ and one Z
 goes to 2 charged leptons and the other goes to 2 neutrinos, ideally would have the two Z's 
 `back-to-back' in Higgs boson's rest frame, leading to a large angel in the transverse plane.
@@ -89,7 +94,7 @@ We also define variables that are not cut on, but are used for fitting:
 \be
 D_{j j}^{V B F}=\frac{P_{S M}^{V B F}(\vec{\Omega})}{P_{S M}^{g g}(\vec{\Omega})+P_{S M}^{V B F}(\vec{\Omega})}
 \ee
-As introduced in\cite{djjvbf}. In short, this variable (discriminator) is sensitive
+as introduced in\cite{djjvbf}. In short, this variable (discriminator) is sensitive
 to the VBF physics and the correlation between (angels and mass of) the outgoing jets resulted from the
 VBF topology. At the same time:
 \be
@@ -100,7 +105,8 @@ from one of the Z bosons. We shall see the usefulness of this variable in channe
 not enough jets are present to construct the DJJVBF variable.
 
 On top of the cuts stated in the beginning, several $\met$ filter and lepton isolated tracks veto
-are present in the underlying analysis framework to reject events with pathological reconstruction.
+are present in the underlying analysis framework to \cc{reject events with pathological reconstruction.}
+\add{remove events with additional leptons that are likely backgrounds, such as those can be found in WZ.}
 % \missingfigure{Show how much backgrounds are gone for maybe 2 samples}
 
 \section{Signal samples re-weighting}
@@ -121,8 +127,8 @@ This is the mass of Higgs terms appears in the propagator on
 the R.H.S of Eq.~\ref{eqn:diff_xsec} as mentioned before. The raw distribution of the true mass
 in different samples (without any weight) is shown in Fig.~\ref{fig:LHE_raw} (left). As expected, 
 the peak of the distribution moves to the right as the mass of the sample becomes larger, at the
-same time, the `peak' of samples with very large mass are wider because the lower edge
-of the peak is dominated by an underlying exponential `tail'. We also see that for some lower mass
+same time, the `peak' of samples with very large mass are wider because the width of the Higgs increases.
+We also see that for some lower mass
 samples (200, 300, 400 etc.), they have a cut-off beyond $\mathrm{M}\approx2500$ which means they have 0
 statistics beyond that mass range. After applying the GEN, PU, and ME weights given by their
 individual MC process and JHUGen MELA, as shown in Fig.~\ref{fig:LHE_raw},
@@ -141,15 +147,15 @@ visual, the plot is in semi-log scale).
         \subfloat[]{\includegraphics[width=.5\linewidth]{fig/LHE_Raw.pdf}}
         \subfloat[]{\includegraphics[width=.5\linewidth]{fig/LHE_PUME_wgts.pdf}}\\
     \end{center}
-    \caption{Normalized distributions of LHECandMass before (left) and after (right) applying
+    \caption{Unit normalized distributions of LHECandMass before (left) and after (right) applying
         the weights. Together they show a need to combine samples for a wide-range, high
     statistics signal sample. Bin size = \SI{10}{\giga\electronvolt}.}
     \label{fig:LHE_raw}
 \end{figure}
 
 The goal of the combination of samples is to use all the events, but with a correction weight
-such that each sample has a higher weight in the region where they posess good statistics. Of
-course while keeping the overall normalization stays unchanged. To do this, we pick a list of
+such that each sample has a higher weight in the region where they poses good statistics
+while keeping the overall normalization stays unchanged. To do this, we pick a list of
 `mass windows' with edges sitting on the true masses of the samples, and we define effective
 number of events $\mathrm{N}_\mathrm{eff} = \frac{(\sum\mathrm{wgts})^2}{\sum(\mathrm{wgts}^2)}$
 within each mass window. Here, the wgts corresponds to the product of PU wgt, GEN wgt, K-factor, and ME weight for
@@ -164,7 +170,8 @@ the effective number of events ensures the weight is not skewed by the differenc
 normalization of samples, and in each of the mass windows, samples with more concentrated
 statistics in that window are given a higher weight. In Fig.~\ref{fig:window_wgt_matrix} (a), a
 clear diagonal pattern can be seen, physically it means that samples with higher true 
-mass are given a higher weight in tail mass windows--- consistent with the expected outcome.
+mass are given a higher weight in tail mass windows--- consistent with the expected outcome. Complete
+table of weights can be founed in Appendix~\ref{apdx:window_wgts}.
 \begin{figure}[htb]
     \begin{center}
         \subfloat[]{\includegraphics[width=.5\linewidth]{fig/Window_wgt_GGH.pdf}}
@@ -196,7 +203,8 @@ next one, derive a sample mass factor based on:
 
 This factor corrects the high variations of overall normalizations between samples, the factors and result
 are shown in Fig.~\ref{fig:LHE_rewgt}. As expected, high mass samples need a down correction (not by a lot)
-to eliminate the deviated trend before.
+to eliminate the deviated trend before. Complete tables of this weights for both samples can be found
+in Appendix~\ref{apdx:mass_wgts}.
 
 Finally, 1.098946 is multiplied to the weights of all ggZZ processes (all of BKG, SIG, BSI
 of GGH sample) as a K factor for Next-to-next-to-leading-order (NNLO) $\rightarrow$ 
@@ -227,13 +235,13 @@ Bin edges for different categories in number of jets are as the following:
 \begin{itemize} 
     \item $\njets < 2$
         \begin{itemize} 
-            \item $\mtzz$ = 150, 300, 400, 600, 800, 1000, 13000
+            \item $\mtzz$ = 150, 300, 400, 600, 800, 1000, 13000 (GeV)
             \item KD1 = DJJVBF = 0, 0.2, 0.4, 0.6, 0.8, 1
         \end{itemize}
     \item $\njets >= 2$
         \begin{itemize} 
-            \item $\mtzz$ = 150, 300, 400, 600, 800, 1000, 13000
-            \item KD1 = $\met$ = 125, 200, 280, 420, 500, 800, 13000
+            \item $\mtzz$ = 150, 300, 400, 600, 800, 1000, 13000 (GeV)
+            \item KD1 = $\met$ = 125, 200, 280, 420, 500, 800, 13000 (GeV)
         \end{itemize}
 \end{itemize}
 The higher mass ($\mtzz$) bins are wider because samples
@@ -258,9 +266,9 @@ by (Integral of the histogram) $\times \num{e-5}$.
 Systematical uncertainties are also included in the fitting:
 \begin{itemize}
     \item Luminosoty: GGH\_ZZ, VBF\_ZZ, qqZZ, qqWZ
-    \item NRB Estimation: TT
+    \item NRB (non-resonant background) Estimation: TT
     \item Branching Ratio of Higgs to ZZ to 4l: GGH\_ZZ, VBF\_ZZ
     \item K-fatcor of backgroun gluongluon parameter
 \end{itemize}
-Most of them are assigned with a $ln(N)$ uncertainty of 1-$\sigma$ or 10\% except the k-factor
-which is a parameters directly multiplied with backgrounds Parton Distrubution Function (PDF).
+Most of them are assigned with a log-normal uncertainty of 2.5\% or 10\% except the k-factor
+which is a parameters directly multiplied with backgrounds Parton Distribution Function (PDF).
