@@ -218,7 +218,8 @@
   {\vspace{6ex}
         Committee in charge:
         \begin{quote}
-          {\@chair}, Chair \\ {\@othermemberA} \\ {\@othermemberB} \\
+          {\@chair}, Chair \\ {\@othermemberA} \\ 
+          \ifnum \@numberofmembers > 2 {\@othermemberB} \\ \fi % Yuanqi Lyu for 2 people.
           \ifnum \@numberofmembers > 3 {\@othermemberC} \\ \fi
           \ifnum \@numberofmembers > 4 {\@othermemberD} \\ \fi
           \ifnum \@numberofmembers > 5 {\@othermembers} \\  \fi
@@ -258,9 +259,12 @@
     $\:\overline{~~~~ \mbox{\rule{0in}{0.16in} \hspace{3.5in}}}\:$ \\
     \vspace{\@approvaladjust} {\@othermemberA} \\
 
-    \vspace{\@approvalspace}
-    $\:\overline{~~~~ \mbox{\rule{0in}{0.16in} \hspace{3.5in}}}\:$ \\
-    \vspace{\@approvaladjust} {\@othermemberB} \\
+   \vspace{\@approvalspace}
+    \ifnum \@numberofmembers > 2
+      $\:\overline{~~~~ \mbox{\rule{0in}{0.16in} \hspace{3.5in}}}\:$ \\
+      \vspace{\@approvaladjust} {\@othermemberB} \\
+      \vspace{\@approvalspace}
+    \fi
 
     \vspace{\@approvalspace}
     \ifnum \@numberofmembers > 3
