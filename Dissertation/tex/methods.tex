@@ -12,7 +12,7 @@ crossings don't produce inelastic collision that is energetic enough to be inter
 
 After the selection of Level 1 (L1) trigger and the higher level trigger (HLT), less than 1000
 events per second are permanently recorded and would go to off-line, full reconstruction. Among these,
-we only select the ones that passes certain HLT triggers:
+we only select the ones that passes certain HLT trigger, for 2018 data set:
 \begin{itemize}
     \item HLT\_Mu17\_TrkIsoVVL\_Mu8\_TrkIsoVVL\_DZ\_Mass3p8
     \item HLT\_IsoMu24
@@ -22,14 +22,15 @@ we only select the ones that passes certain HLT triggers:
     \item HLT\_Ele32\_WPTight\_Gsf
     \item HLT\_Photon200
 \end{itemize}
-Most of the trigger names are self-explanatory, and are the starting point of the analysis. The
-purpose of the triggers is to insure events in the corresponding samples would contain the physics
+Most of the trigger names are self-explanatory, for example, the numbers are the momentum 
+threshold (in \si{\giga\electronvolt}) to trigger them. The HLT is the starting point of the analysis. The
+purpose of the triggers is to ensure the events in the corresponding samples would contain the physics
 we wanted (since run data samples are divided according to what triggers they passed).
 
 The next step is to `add' composite variables that is significant to the physics of interests as
 well as making base-line cuts on the events.
-The jets are all AK4 jets unless mentioned otherwise, and a special type of jets, called B-tagged
-jets are \cc{produced} identified using the DeepFlavour algorithm.\cite{deepflavour} \add{These are the jets
+The jets are all AK4 jets unless mentioned otherwise, and a special type of jets, called b-tagged
+jets are \cc{produced} identified using the DeepFlavour algorithm.\cite{deepflavour} \add{These are jets
 likely originated from relatively long-lived bottom quarks judging from a combination of many measurements 
 including the displacement of verteces.} 
 We shall also define a few of the
@@ -39,19 +40,19 @@ paragraphs.
 After mandating passage of the set of triggers above, based on more delicate physics reasons, 
 the baseline cuts are:
 \begin{itemize}
-    \item No ak4-jet b-tagged jet
+    \item $\met > 125 \gev$:
+        the signal process creates true $\met$ with neutrinos, this cut also reduce bkg such
+        as DY.
     \item Both leptons have $p_\mathrm{T} > \SI{25}{\giga\electronvolt}$
     \item $\abs{\Delta\phi_{\ell\ell\_\met}} > 1.0$
     \item $\abs{\Delta\phi_{\ell\ell\mathrm{Jets}\_\met}} > 2.5$
-    \item $\abs{m_{\ell\ell} - 91.2\gev} < 15\gev$:
+    \item $\abs{m_{\ell\ell} - \SI{91.2}{\giga\electronvolt}} < \SI{15}{\giga\electronvolt}$:
         the signal process consists of $\mathrm{Z}\rightarrow{}\ell\ell$, we
         require the di-lepton system has a mass that is consistent within the Z mass peak.
-    \item $p_\mathrm{T}^{\ell\ell} > 55\gev$: 
+    \item $p_\mathrm{T}^{\ell\ell} > \SI{55}{\giga\electronvolt} $: 
         the Drell–Yan (DY) process creates a lot of backgrounds events, but their di-leptons
         go back-to-back with expected value of this variable close to 0.
-    \item $\met > 125\gev$:
-        the signal process creates true $\met$ with neutrinos, this cut also reduce bkg such
-        as DY.
+    \item No ak4-jet b-tagged jet ($\Delta{}R=0.4$, loose b-tagging working point (WP))
     \item $\min{\abs{ \Delta\phi_{\mathrm{j}\_\met}}} > 0.25$
 \end{itemize}
 In addition, to reduce the detector effects at high pseudo rapidity angels:
@@ -60,16 +61,16 @@ In addition, to reduce the detector effects at high pseudo rapidity angels:
     \item $\eta_e< 2.5$
 \end{itemize}
 
-\add{First, a veto on the b-tagged jet is placed to reduce the background events originated from a pair
-of top quarts ($t\bar{t}$) since top quark always decays to a bottom quark. This cut also doesn't
-reduce signal efficiency at all.} Also, many of the cuts are related to angles between various physical objects presented in the
+First and most importantly, the $\met$ cut reduces background from DY significantly since they don't havd
+real $\met$.  Notice many of the 
+cuts are related to angles between various physical objects presented in the
 reconstruction. The reason is simple: the signal events, where Higgs goes to ZZ and one Z
 goes to 2 charged leptons and the other goes to 2 neutrinos, ideally would have the two Z's 
 `back-to-back' in Higgs boson's rest frame, leading to a large angel in the transverse plane.
 % ( assuming the $\met$ mainly comes from the two neutrinos, of course)
 
 Furthermore, in background events which do not contain this kinematic feature, the
-correlation in the directions of $\met$ and the transverse momentum of the leptons is weaker.
+correlation in the directions of $\vec{E}_{T}^\mathrm{missing}$ and the transverse momentum of the leptons is weaker.
 
 To use this kinematic feature to increase signal to background ratio, we define 
 $\abs{\Delta\phi_{\ell\ell\_\met}}$ as the azimuthal angel (perpendicular to 
@@ -83,6 +84,9 @@ is almost the same except that we add all jets' momentum into the di-lepton syst
 for the events that have produced jets, which in turn would cause the angel be lower in
 a multi-body final state.
 
+\add{Also, a veto on the b-tagged jet is placed to reduce the background events originated from a pair
+of top quarts ($t\bar{t}$) since top quark always decays to a bottom quark.} 
+
 Finally, $\min{\abs{ \Delta\phi_{\mathrm{j}\_\met}}}$ is the minimum azimuthal angel difference between
 any of the jet (that passes cuts) and the $\met$, it exist because jets are one of the 
 most difficult physical objects measure, they often create so-called instrumental $\met$ due to jet
@@ -94,7 +98,7 @@ We also define variables that are not cut on, but are used for fitting:
 \be
 D_{j j}^{V B F}=\frac{P_{S M}^{V B F}(\vec{\Omega})}{P_{S M}^{g g}(\vec{\Omega})+P_{S M}^{V B F}(\vec{\Omega})}
 \ee
-as introduced in\cite{djjvbf}. In short, this variable (discriminator) is sensitive
+as first introduced in another CMS paper~\cite{djjvbf}. In short, this variable (discriminator) is sensitive
 to the VBF physics and the correlation between (angels and mass of) the outgoing jets resulted from the
 VBF topology. At the same time:
 \be
@@ -102,10 +106,11 @@ VBF topology. At the same time:
 \ee
 is defined based on the hypothesis that the $\met$ is comprised of mainly the two neutrinos
 from one of the Z bosons. We shall see the usefulness of this variable in channels where
-not enough jets are present to construct the DJJVBF variable.
+not enough jets are present to construct the $D_{j j}^{V B F}$ variable.
 
-On top of the cuts stated in the beginning, several $\met$ filter and lepton isolated tracks veto
-are present in the underlying analysis framework to \cc{reject events with pathological reconstruction.}
+On top of the cuts stated in the beginning, several $\met$ filters exist to remove detector 
+anomolies. Lepton isolated tracks veto is implemented
+in the underlying analysis framework to \cc{reject events with pathological reconstruction.}
 \add{remove events with additional leptons that are likely backgrounds, such as those can be found in WZ.}
 % \missingfigure{Show how much backgrounds are gone for maybe 2 samples}
 
@@ -129,19 +134,19 @@ in different samples (without any weight) is shown in Fig.~\ref{fig:LHE_raw} (le
 the peak of the distribution moves to the right as the mass of the sample becomes larger, at the
 same time, the `peak' of samples with very large mass are wider because the width of the Higgs increases.
 We also see that for some lower mass
-samples (200, 300, 400 etc.), they have a cut-off beyond $\mathrm{M}\approx2500$ which means they have 0
+samples (200, 300, 400 etc.), they have a cut-off (due to insufficnet statistics) beyond $\mathrm{M}\approx2500$ which means they have 0
 statistics beyond that mass range. After applying the GEN, PU, and ME weights given by their
 individual MC process and JHUGen MELA, as shown in Fig.~\ref{fig:LHE_raw},
 we see that they are consistent with each others' line shape. However, it is clear
 that:
 \begin{enumerate}[label=(\roman*)]
-    \item Lower mass samples have cut-offs in the tail region
+    \item Lower mass samples have insufficnet statistics in the tail region
     \item Samples have poor statistics in mass windows that are 
         far from their true mass (as listed in the legend).
 \end{enumerate}
-The second point is best illustrated by the wide spikes of lower mass samples near their cut-offs,
-as well as the visible fluctuations of high-mass samples in the mass region (don't be fooled by the 
-visual, the plot is in semi-log scale).
+The second point is best illustrated by the wide spikes of lower mass samples near their `cut-offs',
+as well as the visible fluctuations of high-mass samples in the mass region (don't let the 
+visual mislead you, the plots are in semi-log scale).
 \begin{figure}[htb]
     \begin{center}
         \subfloat[]{\includegraphics[width=.5\linewidth]{fig/LHE_Raw.pdf}}
@@ -206,12 +211,12 @@ are shown in Fig.~\ref{fig:LHE_rewgt}. As expected, high mass samples need a dow
 to eliminate the deviated trend before. Complete tables of this weights for both samples can be found
 in Appendix~\ref{apdx:mass_wgts}.
 
-Finally, 1.098946 is multiplied to the weights of all ggZZ processes (all of BKG, SIG, BSI
+Finally, 1.10 is multiplied to the weights of all ggZZ processes (all of BKG, SIG, BSI
 of GGH sample) as a K factor for Next-to-next-to-leading-order (NNLO) $\rightarrow$ 
-Next-to-next-to-next-to-leading-order (N3LO).
+Next-to-next-to-next-to-leading-order (N3LO) QCD.
 
 Although we used the particular matrix element weights for one of the signal hypothesis, these two
-correction factors apply too all hypothesis and a plot of them without normalization are shown
+correction factors apply to all hypothesis and a plot of them without unit area normalization are shown
 in Fig.~\ref{fig:bsi_sig_bkg_compare}. As expected, background exceeds signal by more than 100\%
 which is partially why the constrain is hard to obtain.
 \begin{figure}[htb]
@@ -233,12 +238,12 @@ $\njets = 0,1$ categories. In total, we have 2 ($ee$ or $\mu\mu$) $\times$ 4 ($\
 channels to consider when making histogram templates.
 Bin edges for different categories in number of jets are as the following:
 \begin{itemize} 
-    \item $\njets < 2$
+    \item $\njets >= 2$
         \begin{itemize} 
             \item $\mtzz$ = 150, 300, 400, 600, 800, 1000, 13000 (GeV)
             \item KD1 = DJJVBF = 0, 0.2, 0.4, 0.6, 0.8, 1
         \end{itemize}
-    \item $\njets >= 2$
+    \item $\njets < 2$
         \begin{itemize} 
             \item $\mtzz$ = 150, 300, 400, 600, 800, 1000, 13000 (GeV)
             \item KD1 = $\met$ = 125, 200, 280, 420, 500, 800, 13000 (GeV)
@@ -250,25 +255,25 @@ and the cuts being applied. As shown in Fig.~\ref{fig:templates_demo}, the relat
 bin in the histogram templates are displayed, a balance between significance and uncertainty is
 obtained. We use the above binning for all samples and 8 channels that are considered in this
 thesis. See Appendix~\ref{apdx:templates_hist} for a compilation of template histograms of GGH sample.
-
-For low-yield background samples, due to the nature of NLO samples, bins sometimes would have negative
-content. To mitigate it's effect on the likelihood fitting (pathological), we replace the bin content
-by (Integral of the histogram) $\times \num{e-5}$.
-\begin{figure}[htb]
+\begin{figure}[hb]
     \begin{center}
         \subfloat[]{\includegraphics[width=.5\linewidth]{fig/ggZZ_templates/ggZZ_2e2nu_nj2_Bkg.pdf}}
         \subfloat[]{\includegraphics[width=.5\linewidth]{fig/ggZZ_templates/ggZZ_2e2nu_nj2_Sig.pdf}}
     \end{center}
-    \caption{Background (left) and Signal (right) histogram templates for $2e2\nu$ with $\njets = 2$.}
+    \caption{Background (left) and Signal (right) histogram templates for $2e2\nu$ with $\njets = 2$, showing
+    percentage (statistical) error.}
     \label{fig:templates_demo}
 \end{figure}
 
+For low-yield background samples, due to the nature of NLO samples, bins sometimes would have negative
+content. To mitigate it's effect on the likelihood fitting (pathological), we replace the bin content
+by (Integral of the histogram) $\times \num{e-5}$.
+
 Systematical uncertainties are also included in the fitting:
 \begin{itemize}
-    \item Luminosoty: GGH\_ZZ, VBF\_ZZ, qqZZ, qqWZ
-    \item NRB (non-resonant background) Estimation: TT
+    \item Luminosoties GGH\_ZZ, VBF\_ZZ, qqZZ, qqWZ
+    \item NRB (non-resonant background) Estimation: TT, WW
     \item Branching Ratio of Higgs to ZZ to 4l: GGH\_ZZ, VBF\_ZZ
-    \item K-fatcor of backgroun gluongluon parameter
+    \item K-fatcors of backgroun gluongluon parameter
 \end{itemize}
-Most of them are assigned with a log-normal uncertainty of 2.5\% or 10\% except the k-factor
-which is a parameters directly multiplied with backgrounds Parton Distribution Function (PDF).
+See Table.~\ref{tab:uncertainty} for respective range of these uncertainties.
