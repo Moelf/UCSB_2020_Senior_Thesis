@@ -1,62 +1,48 @@
 %Introduction
 This chapter contains a brief introduction of the experimental aspect of
-the Large Hadron Collider (LHC) physics, the CMS detector, and the physics behind the off-shell methods
-for constraining the Higgs decay width. Finally, a very brief technical account for
-the Monte Carlo (MC) events production is also presented.
+the Large Hadron Collider (LHC) physics, the Compact Muon Solenoid (CMS) detector, and the physics behind the off-shell methods
+for constraining the Higgs decay width. Finally, we also present a very brief technical account for
+the Monte Carlo (MC) events production.
 
-\cc{The work presented here is part of a wider endeavor to measure the decay width as well
-    as a test for (the strength of) BSM contributions by studying the off-shell Higgs production. A pure
-    MC based analysis is conducted here but with many of the same tools and studies needed for the final
-    result, as well as the expected value of the final constraint (for the entire Run 2).
-}
 \section{Physics at the LHC (and elsewhere)}
 After the discovery of standard model (SM) Higgs boson in 2012, the LHC
 went through a series of upgrades during 2013--2015 and finally restarted with center-of-mass energy reaching
 \SI{13}{\tera\electronvolt}. Though the last particle promised by the SM has been discovered, there remains
 `known' mysteries in high energy physics.
 
-\add{The importance of beyond-the-standard model (BSM) physics is self-evident, though the SM is one
+Although the SM is one
 of the most precise theories in physics we ever had, the model requires many `inputs' from the experiment
-for parametrization, and, it cannot account for phenomena such as neutrino oscillation with its
-original form. One proposed (and admittedly the most popular one) solution is called Supersymmetry (SUSY),
-which predicts the existence of more particles than what we have identified so far in the SM. Because these
+for parametrization, and cannot account for phenomena such as neutrino oscillation with its
+original form. One proposed (and admittedly the most popular one) solution is called Supersymmetry (SUSY), which is
+one of the many models under the boarder term beyond-the-standard-model (BSM) physics.
+SUSY predicts the existence of more particles than what we have identified so far in the SM.\@ Because these
 predicted particles have a `mirror' extension/association to the SM particles, they are often addressed as SUSY
 partners (as each fundamental fermion in the SM would have a bosonic SUSY partner and vise versa).
 While the direct searches for these SUSY partners in the past few years have all yielded null results,
 they have not discouraged physicists from other attempts of probing the
-BSM physics in other ways.}
+BSM physics in other ways.
 
-Higgs boson has a special role in
-the process mainly due to the Higgs field, from which the particle originates from, couples to all 
-massive particles. Thus making Higgs boson a window to probe the BSM physics, 
+The Higgs boson has a special role in
+the process mainly due to the Higgs field, from which the particle originates from. The Higgs field couples to all 
+massive particles, thus making the Higgs boson a window to probe the BSM physics, 
 as discussed in Section~\ref{sec:physics_offshell}.
 
 The LHC has been operating at the same energy for the past 3 years (2016-2018) with 
-the delivered luminosity ramping up in each year\cite{luminosity}. In this analysis, we will be using
-mostly simulation that was produced corresponding to Run period 2018, but scaled to 
+the delivered luminosity ramping up in each year\cite{luminosity}. In this analysis, we will be mostly using
+simulations that were produced corresponding to Run period 2018, but scaled to 
 \SI{137.15}{\per\femto\barn} to simulate the expected result by using the entire Run 2 data,
 for the Compact Muon Solenoid (CMS) detector.
 
 
 \section{The CMS Detector}
-% [1]CMS Collaboration. Performance of CMS muon reconstruction in pp collision events at sqrt(s) = 7 TeV. J Inst 2012;7:P10002–P10002. https://doi.org/10.1088/1748-0221/7/10/P10002.
-
-% [2]CMS Collaboration. Performance of electron reconstruction and selection with the CMS detector in proton-proton collisions at sqrt(s) = 8 TeV. J Inst 2015;10:P06005–P06005. https://doi.org/10.1088/1748-0221/10/06/P06005.
-
-% [3]Cacciari M, Salam GP, Soyez G. FastJet user manual. Eur Phys J C 2012;72:1896. https://doi.org/10.1140/epjc/s10052-012-1896-2.
-
-% [4][0802.1189] The anti-k\_t jet clustering algorithm n.d. https://arxiv.org/abs/0802.1189 (accessed May 25, 2020).
-
-\cc{The CMS is one of the two general-purpose detectors built around LHC (the other one is ATLAS). It
-is `compact' only when comparing to the ATLAS detector and is, in fact, heavier than the latter.}
 Though we are not using the data accumulated by the CMS detector, the simulated events are
 reconstructed based on the material interaction and electronics responses of the real detector using the
-\gf~package\cite{geant4}.
+\gf~package~\cite{geant4}.
 
-The defining feature of the CMS detector is the solenoid (as in its name) around the beamline, in the
-middle of the detector\cite{solenoid_map}.
+The defining feature of the CMS detector is the solenoid (which is what the S stands for) around the beamline, in the
+middle of the detector~\cite{solenoid_map}.
 This superconducting solenoid produces a \SI{4}{\tesla} magnetic field and is 
-\SI{12.5}{\meter} long free bore\cite{solenoid_map}. This feature allows the tracking of
+\SI{12.5}{\meter} long free bore~\cite{solenoid_map}. This feature allows the tracking of
 charged particles by bending their trajectory when hitting various layers of the detector.
 
 
@@ -75,24 +61,24 @@ which includes electrons and muons (the half-life of tau-on is too short to inte
 the detector directly);
 `final-state' here means they are the end products of a decay chain and are recorded by the detector
 components directly. If we concentrate on the red and blue lines in Fig.~\ref{fig:CMS_Slice}, we
-can see that \cc{for the} electrons (red) leave a few hits that resemble a curved
+can see that electrons (red) leave a few hits that resemble a curved
 track within the silicon tracker and are stopped at the electromagnetic calorimeter
 (ECAL). 
 
 For the muons (blue line in Fig.~\ref{fig:CMS_Slice}), they largely go through all the interior layers unhinged 
-due to their higher mass \add{and the fact that they only interact electromagnetically (unlike a proton, for example)};
+due to their higher mass and the fact that they only interact electromagnetically (unlike a proton, for example);
 pay close attention to the `S'-shaped curve, this is due to the opposite magnetic
 field outside of the superconducting solenoid. The iron return yoke also stops particles other than
-muons coming through (except neutrinos, they always travel freely). Although information such as momentum relies on
+muons coming through (except neutrinos which always travel freely). Although information such as momentum relies on
 hits on the silicon trackers, the hits in the muon chambers and a matching trajectory are needed 
 for the object to be reconstructed as a muon. Notice how the
-muon chambers occupy more than half of the detector by size, such design allows the CMS 
+muon chambers occupy more than half of the detector by size. Such a design allows the CMS 
 detector to excel in muon measurements and is the primary reason for the overall design.
 % \todo[inline]{TODO: PF and anti-k algorithm in the context of this thesis}
 
 Zooming out from the individual components of the detector, the complete (physics object) reconstruction
-process is complex and sometimes requires information from multiple parts of the detector, this
-algorithm is called the Particle Flow (PF)\cite{particle_flow}. While the energy of simple and neutral 
+process is complex and sometimes requires information from multiple parts of the detector. This
+algorithm is called the Particle Flow (PF)~\cite{particle_flow}. While the energy of simple and neutral 
 objects such as photon are directly measured by the ECAL (with correction such as zero-suppression, where minimal
 activities are treated as zero value during readout), electron measurements
 need the information from the inner tracker (to determine charge and momentum), energy at the ECAL, and
@@ -100,7 +86,7 @@ also, the sum of the energy of photons produced by bremsstrahlung (when electron
 detector material) compatible with the electron's track.
 
 For gluons and quarks that come out of the interaction vertex, due to quark confinement, the detector 
-is only be able to `see' a narrow `spray' of final state (stable) particles that, subsequently, 
+is only be able to `see' a narrow `spray' of final state (stable) particles that subsequently
 are clustered into objects called `jets'.
 There are different algorithms and criteria to combine a collection of measurements into a single jet,
 in the CMS at the moment, the anti-$k_t$ clustering algorithm~\cite{anti_k,fastjet} is used. In short, the algorithm would cluster objects
@@ -117,8 +103,8 @@ The algorithm is resilient to QCD effects that would cause jets to split, such a
 \end{figure}
 \footnotetext{\url{https://twiki.cern.ch/twiki/bin/viewfile/Sandbox/Lecture?rev=1;filename=Philipp\_Schieferdeckers\_Lecture.pdf\#page=3}}
 
-In this analysis, we use the AK4 jets which means that the algorithm is given a $R=0.4$ parameter, another
-common choice is $R=0.8$ which is preferred in some cases for boosted topologies due to a larger `opening
+In this analysis, we use the AK4 jets which means that the algorithm is given a $R=0.4$ parameter. Another
+common choice is $R=0.8$, which is preferred in some cases for boosted topologies due to a larger `opening
 angle'.
 
 \section{The Higgs boson and off-shell methods}\label{sec:physics_offshell}
@@ -126,31 +112,31 @@ angle'.
 
 
 As mentioned above, the Higgs boson has a special place as it can be seen as a `bridge' between
-the SM and the BSM (in some models) as some SUSY particles can decay into it or decayed from it, 
-or simply have a BSM production Feynman diagram that leads to more a higher Higgs
+the SM and the BSM (in some models), as some SUSY particles can decay into it or decay out from it, 
+or simply have a BSM production Feynman diagram that leads to a higher Higgs
 bosons production rate than the SM expects. In any of these cases, the basic properties of the SM Higgs
 boson remains important.
 
-\add{The importance of studying the Higgs also comes from the fact that it is an `add-on' to the SM as
-a mass generation mechanism for gauge bosons. The Higgs sector of the SM is not well tested, 
-and, in theory, could be more complicated than the minimal SM suggests, for example, multiple Higgs bosons
-being present,
-or the observed Higgs being a composite particle. Interestingly, if not composite, the observed Higgs boson would be the only
-spin-zero fundamental particle we know.}
+The importance of studying the Higgs also comes from the fact that it is an `add-on' to the SM as
+a mass generation mechanism for gauge bosons and fundamental fermions. The Higgs sector of the SM is not well tested, 
+and, in theory, could be more complicated than the minimal SM suggests. For example, multiple Higgs bosons
+may be present,
+or the observed Higgs may be a composite particle. Interestingly, if not composite, the observed Higgs boson would be the only
+spin-zero fundamental particle we know.
 
 
 Many properties are well measured, such as its mass and spin~\cite{cms_higgs}; others, however,
 have not entered the realm of `precision' physics so far. One of them is the total decay width of
-the Higgs boson, which is of course associated with the particle's half-life $\tau$ as $\Gamma=\frac{h}{\tau}$.
+the Higgs boson, which is of course associated with the particle's half-life $\tau$ as $\Gamma=\frac{\hbar}{\tau}$.
 The SM predicts
-that the Higgs boson to have a decay width of \SI{4.07}{\mega\electronvolt}. The problem is
+that the Higgs boson will have a decay width of \SI{4.07}{\mega\electronvolt}. The problem is
 that the energy resolution of the CMS detector, which is around $\mathcal{O}(1) $\si{\giga\electronvolt}
 for the di-photon or 4-leptons final states, is not even remotely close to that prediction.
 
-One way suggested by the theorists so far is to indirectly measure this decay width using the
+One way to measure the decay width suggested by the theorists is to indirectly measure it using the
 off-shell method~\cite{offshell_theory1, offshell_theory2}. When a Higgs boson decays into two massive
 vector bosons (VV) (in the scope of this thesis, two Z bosons),
-one of them has to be off-shell, or the Higgs boson is off-shell, this is because
+one of them has to be off-shell, or the Higgs boson is off-shell. This is because
 $m_\text{H}\approx\SI{125}{\giga\electronvolt}$ is smaller than the 
 mass of two W-bosons ($\approx\SI{160}{\giga\electronvolt}$) 
 or of two Z-bosons ($\approx\SI{182}{\giga\electronvolt}$). The Higgs boson decay branching ratio
@@ -170,8 +156,8 @@ differential cross-section:
 \ee
 
 where the two $g$ on the right-hand side are the couplings for production from vv and decay
-to VV respectively. Integrating this equation near the on-shell mass of the SM Higgs boson 
-or in the tail region (above the mass of VV), one can translate the differential cross section
+to VV respectively. By integrating this equation near the on-shell mass of the SM Higgs boson 
+or in the tail region (above the mass of a pair of V's), one can translate the differential cross section
 into event rate that can be (in theory) measured in experiments:
 \begin{equation}
 \begin{split}
@@ -189,7 +175,7 @@ at the CMS detector using simulated (MC) events. The work conducted here is part
 within a group formed by the UCSB HEP group, Universit\'e Libre de Bruxelles, and Beihang University under
 the CMS Collaboration\footnote{Internally, CMS AN-20-081}. The analysis items and methods included in this
 thesis are a subset of what will be in the official analysis and is a part of the final measurement. More
-detail on what approximation has been taken in order to obtain a preliminary expected result is discussed
+details on what approximations have been taken in order to obtain a preliminary expected result will be discussed
 in the next few sections.
 
 % \todo[inline]{maybe elaborate a bit more?}
@@ -216,10 +202,10 @@ contain (off-shell) Higgs boson in the intermediate state:
 \item TT: $t\bar{t}$, including samples with additional vector boson (TTW/TTZ) or photon + jets (TTGJets).
 \end{itemize}
 
-The MC samples for all processes except DY are produced in RunIIAutumn18MiniAOD-102X,
-DY sample is produced in RunIISummer16MiniAODv3 94X and scaled appropriately afterward. \add{As their names
-suggest, each year in the Run 2 (2016-2018) has their separate MC samples since the running condition 
-(the LHC) and the condition of the CMS can change from year to year, though the physics remains the same.}
+The MC samples for all processes except DY are produced in Run 2 Autumn18MiniAOD-102X analysis,
+DY sample is produced in Run 2 Summer16MiniAODv3 94X analysis and scaled appropriately afterward. As their names
+suggest, each year in the Run 2 (2016-2018) has their separate MC samples since the running condition
+(the LHC) and the condition of CMS can change from year to year, though the physics remains the same.
 
 Various programs are used in the long chain of simulated events production.
 \textsc{POWHEG v2}\xspace\cite{powhegv2}, \textsc{JHU generator and MELA}\xspace\cite{jhugen}, are used for 
@@ -230,30 +216,30 @@ showering and \textsc{NNPDF} 3.1\cite{nnpdf} sets are used for the parton distri
 % \todo[inline]{A description of LO / NLO and various program and NNPDF version etc.\ involved}
 
 Before diving into the procedure in which the signal samples are generated separately and
-subsequently combined with via a reweighting, it would be appropriate to give
+subsequently combined via a reweighting, it would be appropriate to give
 an account for the general idea behind the `event weight' and its significance.
 
 As described at the beginning of this section, events that correspond to different physical
 processes are generated in different MC configurations at different `orders' of the QCD/QED physics.
-Naively, one would imagine a process where the MC can directly simulate the physics at
-the LHC at a given center-of-mass energy. Unfortunately, this is neither efficient nor possible:
-not possible because some physical processes (especially QCD ones) are non-perturbative and
-stepped approach is taken to gradually build-up to the final event.
-
-It is also impossibly inefficient because the processes an analysis concerns (for example, in all SUSY
-searches) usually have a tiny (if not 0) cross-sections compare to other common ones that can be
+Naively, one would imagine a process where the MC can directly simulate the complete physics at
+the LHC at a given center-of-mass energy. Unfortunately, this is neither efficient nor possible.
+It is not possible because some physical processes (especially QCD ones) are non-perturbative and
+stepped approaches are taken to gradually build-up to the final event.
+It is also impossibly inefficient because the processes that an analysis is concerned with 
+(for example, in all SUSY searches) usually have a tiny (if not 0)
+cross-section compared to other common processes that can be
 found at
 $\sqrt{\mathrm{s}} = \SI{13}{\tera\electronvolt}$ at the LHC.\@ And it would be a waste of
 computing resources to generate common processes over and over again.
 
-\begin{table}[]
+\begin{table}[ht]
 \centering
 \begin{tabular}{|c|c|c|}
 \hline
 \multicolumn{3}{|c|}{Example of some important weights}                                                                                       \\ \hline
 Name                  & abbr.   & Description                                                                                                 \\ \hline
 Generator weight      & GEN wgt & Given by MC event generator                                                                                 \\ \hline
-Pile-up weight        & PU wgt  & Correction for the pile-up effect                                                                           \\ \hline
+Pile-up weight        & PU wgt  & Correction for the pile-up effect\footnotemark                                                                           \\ \hline
 Matrix element weight & ME wgt  & From generator that uses ME Likelihood approach \\ \hline
 K-factor              & Kfactor & Correction for LO cross section of QCD processes                                                         \\ \hline
 \end{tabular}
@@ -262,15 +248,16 @@ K-factor              & Kfactor & Correction for LO cross section of QCD process
 \end{table}
 
 In reality, Monte Carlo events are each given many `weights' (Tab. \ref{tab:MC_wgts}), so that
-we don't have to generate uninteresting processes, and at the same time, for the events that lack
-in number (results in poor statistics in the distribution), one can optionally generate
-extension events set for it. In practice, for example as shown in Fig.~\ref{fig:wgt_demo}, 
+we don't have to generate uninteresting processes. At the same time, for the events that lack
+in number (i.e.\ it results in poor statistical distribution), one can optionally generate
+extension events set for it. In practice, (for example as shown in Fig.~\ref{fig:wgt_demo})
 you can have \num{1e6} raw MC entries, but only
 100 expected events (yield) in the integration of the histogram, 
 due to the physics process being very rarely seen. But,
 these \num{1e6} would form a much smoother distribution than if you only had 100 entries to work with.
 Also, this enables the generation of `unknown' processes which can
 be used to constrain possible new physics in a likelihood fit (against null hypothesis).
+\footnotetext{when many unwanted collisions happen in the same bunch crossing}
 
 \begin{figure}[hb]
 \begin{center}
@@ -281,10 +268,10 @@ the total number of expected events.}
 \label{fig:wgt_demo}
 \end{figure}
 
-In this thesis, we explicitly use K-factors, and variation of it to 
+In this thesis, we explicitly use K-factors, and variations of it to 
 obtain Electroweak systematical uncertainty in qqZZ/qqWZ/qqWW backgrounds. For the signal processes involving
-the Higgs boson, a special treatment is given to merge and obtain high statistics samples from
-multiple `raw' samples with different `true' Higgs mass corresponding to the $m_\mathrm{H}$ term
+the Higgs boson, special treatment is given to merging and obtaining high-statistics samples from
+multiple `raw' samples with different pole mass of Higgs boson corresponding to the $m_\mathrm{H}$ term
 in the denominator on the right-hand side of Eq.~\ref{eqn:diff_xsec}.
 This approach is also desirable for the generation of off-shell (Higgs) decays. The procedures 
 used and the resultant combined signal samples are discussed in the Sec.~\ref{sec:sig_rewgt}.
@@ -299,10 +286,10 @@ uncertainties are considered:
 \begin{tabular}{lcc}
 \hline
 Source                             & Uncertainty            & Affected processes \\ \hline
-Integrated luminosity              & 2.5\%                  & GGH, VBF,qqZZ,qqWZ \\
+Integrated luminosity              & 2.5\%                  & ggZZ, VVZZ, qqZZ, qqWZ \\
 Non-resonant background estimation & 10\%                   & TT, qqWW           \\
 Electroweak                       & 1$\sigma$ & qqZZ, qqWZ         \\
-Higgs branching ratio              & 2\%                    & GGH, VBF           \\
+Higgs branching ratio              & 2\%                    & ggZZ, VVZZ           \\
 gg background              & 10\%                   & ggZZ
 \end{tabular}
 \caption{Summary of systematic uncertainties considered in this thesis and their
@@ -310,8 +297,8 @@ magnitude as well as processes affected by them.}
 \label{tab:systs}
 \end{table}
 
-Most of the uncertainties are simply experimental, for example, the luminosity. The Electroweak
-uncertainties are obtained by scaling up and down on the corresponding samples and non-resonant
+Most of the uncertainties are simply experimental, for example, the luminosity. The Electroweak (EW)
+uncertainties are obtained by scaling EW NLO K-factor up or down on the corresponding samples and non-resonant
 background comes from separate studies that examine $e/\mu$ events in the data, which
 are limited by the number of events within the Z-boson mass window. Here we approximate this 
 uncertainty as $\pm 10\%$.  The gg background uncertainty is parametric respect to the $\mtzz$ defined 
