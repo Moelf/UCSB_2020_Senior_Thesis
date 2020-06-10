@@ -112,15 +112,9 @@ On top of the cuts stated in the beginning, several $\met$ filters exist to remo
 anomalies. A lepton isolated track veto is implemented
 in the underlying analysis framework to 
 remove events with additional leptons that are likely backgrounds, such as those can be found in WZ.
-% \missingfigure{Show how much backgrounds are gone for maybe 2 samples}
 
 \section{Signal samples re-weighting}
 \label{sec:sig_rewgt}
-% \begin{itemize}
-%     \item Physics of Higgs signal sample (the weight, ME)
-%     \item the need for piecing together samples with different LHE Mass
-%     \item results (also see appendix A)
-% \end{itemize}
 Extra attention is given to the off-shell Higgs sample used in this thesis and two different kinds
 of re-weighting of the simulated events are applied in to produced an MC sample with wide
 mass spectrum way beyond the mass of Higgs ($\approx \SI{125}{\giga\electronvolt}$). We use the
@@ -228,18 +222,9 @@ which is partially why the constrain is hard to obtain.
     \caption{Distributions of background, signal, and background signal interaction}
     \label{fig:bsi_sig_bkg_compare}
 \end{figure}
+\clearpage
 \section{Strategy in variable selection and binning and systematical uncertainties}
 
-\begin{figure}[htb]
-\begin{center}
-\subfloat[]{\includegraphics[width=.33\linewidth]{fig/counts_templates/ggZZ_2e2nu_nj2_Sig.pdf}}
-\subfloat[]{\includegraphics[width=.33\linewidth]{fig/counts_templates/VVZZ_2e2nu_nj2_Sig.pdf}}
-\subfloat[]{\includegraphics[width=.33\linewidth]{fig/counts_templates/qqZZ_2e2nu_nj2_count.pdf}}
-\end{center}
-\caption{ggHH (left), VBF (center), and qqZZ (right), histogram templates for fitting,
-in $2e2\nu$ channel with 2 jets. Color bar is scaled by \num{1e5}.}
-\label{fig:templates_demo}
-\end{figure}
 After we prepared the signal samples and decided on the event selection criteria, we then
 decided on the variables and their (2D histogram, as shown in Fig.~\ref{fig:templates_demo}) `binning' before a combined-limits
 fit can be applied. As discussed in earlier sections, one of the more inventive variables
@@ -263,10 +248,46 @@ The bin edges for different categories in number of jets is the following:
 \end{itemize}
 The higher mass ($\mtzz$) bins are wider because samples
 have difficulty filling them due to physical reasons (especially for backgrounds) 
-and because the cuts are applied. As shown in Fig.~\ref{fig:templates_demo}, the relative error (err/counts) of each
-bin in the histogram templates are displayed, a balance between significance and uncertainty is
-obtained. We use the above binning for all samples and 8 channels that are considered in this
-thesis. See Appendix~\ref{apdx:templates_hist} for a compilation of template histograms of GGH sample.
+and because the cuts are applied. 
+
+The different shapes of backgrounds and signals are shown in Fig.~\ref{fig:1d_hists_all}. These plots have noticeable features
+including the VBF samples peak at ends of the $D_{j j}^{V B F}$ showing the power of this variable. 
+See Appendix~\ref{sec:1dhists}
+for a more complete collection of plots.
+
+\begin{figure}[htb]
+\begin{center}
+\subfloat[]{\includegraphics[width=.4\linewidth]{fig/MT_ZZ_Nj_2.png}}
+\subfloat[]{\includegraphics[width=.4\linewidth]{fig/MET_Nj_2.png}}\\
+\subfloat[]{\includegraphics[width=.5\linewidth]{fig/DJJ_VBF_Nj_2.png}}
+\end{center}
+\caption{Distribution (integral not to be taken literal) of $\mtzz$ (left), $\met$ (right), and
+    $D_{j j}^{V B F}$ (bottom) for backgrounds and signals with
+$N_\mathrm{jets}=2$. Here sig a3 is a scaled up version of the signal (a1) and VVV corresponds to
+WWW or WWZ or WZZ}
+\label{fig:1d_hists_all}
+\end{figure}
+
+We use the above binning for all samples and 8 channels that are considered in this
+thesis. A limited number of the 2d template histograms are
+shown in Fig.~\ref{fig:templates_demo}. Again, we notice the peaks of $D_{j j}^{V B F}$ in
+VBF samples match our expectation.
+See Appendix~\ref{apdx:templates_hist} for a compilation of template histograms of ggZZ sample.
+
+
+\begin{figure}[htb]
+\begin{center}
+\subfloat[]{\includegraphics[width=.33\linewidth]{fig/counts_templates/ggZZ_2e2nu_nj1_Sig.pdf}}
+\subfloat[]{\includegraphics[width=.33\linewidth]{fig/counts_templates/VVZZ_2e2nu_nj1_Sig.pdf}}
+\subfloat[]{\includegraphics[width=.33\linewidth]{fig/counts_templates/qqZZ_2e2nu_nj1_count.pdf}}\\
+\subfloat[]{\includegraphics[width=.33\linewidth]{fig/counts_templates/ggZZ_2e2nu_nj2_Sig.pdf}}
+\subfloat[]{\includegraphics[width=.33\linewidth]{fig/counts_templates/VVZZ_2e2nu_nj2_Sig.pdf}}
+\subfloat[]{\includegraphics[width=.33\linewidth]{fig/counts_templates/qqZZ_2e2nu_nj2_count.pdf}}
+\end{center}
+\caption{ggZZ (left), VBF (center), and qqZZ (right), histogram templates for fitting,
+in $2e2\nu$ channel with 1,2 jet(s). Color bar (event counts) is scaled by \num{1e5}.}
+\label{fig:templates_demo}
+\end{figure}
 
 For low-yield background samples, due to the nature of NLO samples, bins sometimes will have negative
 content. To mitigate its effect on the likelihood fitting (pathological), we replace the bin content
